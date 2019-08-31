@@ -1,0 +1,12 @@
+jquery事件
+	$('button').click(function(){});
+	$('button').bind('click',function(){});
+	$('button').unbind('click',handle);
+	$('button').on('click',handle);
+	$('button').off('click',handle);
+
+	//事件代理
+	$('body').on('click','button',function(event){});
+点击新增,修改,弹出模态框
+	新增,空表单
+	修改,带数据的表单

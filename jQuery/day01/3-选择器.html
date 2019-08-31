@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器</title>
+	<style>
+		.outer{
+			/*display: inline-block;*/
+			border:1px solid pink;
+			overflow: hidden;
+			folat:left;
+		}
+		.inner{
+			border:1px solid red;
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin:10px;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+
+			var $result = $('.outer');
+			var $result = $('.outer>.inner');
+			var $result =  $('.one+');
+			var $result =  $('.one~*');
+			// console.log($result);
+			//选择元素的第一个和最后一个
+			var $result = $('.outer .inner:first');
+			var $result = $('.outer .inner:last');
+			//选择元素的单双
+			var $result = $('.outer .inner:even');
+			var $result = $('.outer .inner:odd');
+			//选择索引
+			var $result = $('.outer .inner:eq(0)');
+
+			//选择索引小于3的
+			var $result = $('.outer .inner:gt(3)');
+
+			//除了XX
+			var $result = $('.outer .inner:not(:lt("2"))');
+			// console.log($result);
+
+			//选择标题元素
+			var $result = $('.outer :header');
+			//获取内容包含o的
+			var $result = $('.outer :contains("o")');
+			// var $result = $('.outer .inner:empty');
+			var $result = $('.outer *:empty');
+			
+
+			var $result = $('div.outer');
+			var $result = $('.outer>.one');
+			//下一个兄弟节点
+			var $result = $('.outer+.outer');
+			// console.log($result);
+			var $result = $('.outer~.outer');
+			console.log($result);
+			//$result.css('background','red');
+		});
+	</script>
+</head>
+<body>
+	<div class="outer" id="to">
+		<div class="inner">o</div>
+		<div class="inner one"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner one"></div>
+		<div class="inner"></div>
+		<div class="inner">o</div>
+		<div class="inner">
+			<div class="one"></div>
+			<h4>inner</h4>
+			<span>lance</span>
+		</div>
+		<h2>hello</h2>
+		<h4>world</h4>
+		<!-- <div style="overflow: hidden;">
+			<div class="inner"></div>
+		</div> -->
+	</div>
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	
+	</div>
+	
+</body>
+</html>

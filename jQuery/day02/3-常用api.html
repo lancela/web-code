@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3-常用api.html</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			// //选中了多个,$().html()拿第一个
+			// console.log($('div').html());
+			// //选中了多个,$().text()拿所有的
+			// console.log($('div').text());
+			// //选中了多个,$().html("html")改多个
+			// console.log($('div').html('<h2>hello</h2>'));
+			// //
+			// console.log($('div').text('html'));
+			//val()  获得第一个
+			console.log($('input').val());
+			console.log($('input')[0].value);
+			$('input').val('hello');
+			// 或取每个选中元素的html
+			$('div').html(function(index,item){
+				//index索引
+				//item 值
+				console.log(item,index);
+			});
+			//遍历jquery对象 (用的更多)
+			// $('div').each(function(index,item){
+			// 	//index 索引
+			// 	//item DOM 节点
+			// 	// console.log(index,item);
+			// 	console.log($(item).html());
+			// });
+		});
+	</script>
+</head>
+
+<body>
+	<input type="text" value="zhangsan">
+	<input type="text" value="lisi">
+	<div><span>one</span></div>
+	<div><span>two</span></div>
+	<div><span>three</span></div>
+
+</body>
+</html>

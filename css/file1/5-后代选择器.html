@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后代选择器</title>
+	<style>
+		
+		/*选中outer的所有后代*/
+		/*.outer *{
+			/*边框 速写属性*/ 
+		/*	border: 1px solid red;
+		}*/
+		/*选中后代的 p标签*/
+		.outer p{
+			/*边框 速写属性*/ 
+			/*border: 1px solid red;*/
+		}
+		.outer .inner{
+			/*background-color: red;*/
+		}
+		/*outer的直接孩子的所有元素*/
+		.outer>*{
+			/*border: 1px dashed coral;*/
+		}
+		/*outer的直接孩子的p元素*/
+		.outer>p{
+			/*border: 1px dashed coral;*/
+		}
+		.outer>span{
+			/*border:1px dashed red;*/
+		}
+		/*下一个兄弟元素且是span*/
+		/*#p2+* 推荐*/
+		#p2+span{
+			/*border:1px dotted red;*/
+		}
+		/*之后的所有的兄弟节点*/
+		/*#p2~* */
+		#p2~div{
+			/*border:1px dotted red;*/
+		}
+
+		/*组合选择器(可以是任何的选择器) 用英文逗号隔开*/
+	/* 	p,span{
+		border:1px dotted red;
+	} */
+		/*嵌套选择器*/
+		/*是div且类名是inner的*/
+		/*div .inner 是有区别的 空格要注意*/
+		div.inner{
+			border:1px dotted red;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<p>p1</p>
+		<p id="p2">p2</p>
+		<span>span1</span>
+		<span>span2</span>
+		<div class="inner">
+			<p>p1</p>
+			<p>p2</p>
+			<span>span1</span>
+			<span>span2</span>
+		</div>
+		
+	</div>
+	<div class="inner">
+		<p>p1</p>
+		<p>p2</p>
+		<span>span1</span>
+		<span>span2</span>
+	</div>
+</body>
+</html>

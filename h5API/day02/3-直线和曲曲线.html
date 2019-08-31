@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3-直线和曲曲线.html</title>
+	<style>
+		canvas{
+			border:1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var i=0;
+			var canvas = document.getElementById('canvas');
+			//获得2d上下文对象
+			var context = canvas.getContext('2d');
+			// for(var j=0;j<8;){
+			// 	(function(j){
+			// 		setTimeout(drow(),20000);
+			// 	})(j);
+			// 	j++;
+			// }
+			var num=0; 
+			function al() {
+			 num++;
+			  if(num<=8) 
+
+			  	setTimeout(function(){
+			  		drow();
+			  		al()
+			  	},10);
+			  }
+			al();
+			function drow(){
+				// 设置路径 打开路径
+				context.beginPath();
+				// 设置起点
+				context.moveTo(i,i);
+				// 设置直线终点
+				context.lineTo(i,i+50);
+				// 关闭路径
+				context.closePath();
+				// 设置边框样式
+				context.strokeStyle="pink";
+				context.lineWidth =2;
+				// 绘制路径
+				context.stroke();
+				// 画圆
+				context.beginPath();
+				context.arc(i,i+50,5,0,2*Math.PI,true);
+				context.closePath();
+				context.closePath();
+				context.fillStyle='pink';
+				context.fill();
+
+				context.beginPath();
+				context.moveTo(i,i+50);
+				context.lineTo(i+50,i+50);
+				context.closePath();
+				context.strokeStyle="pink";
+				context.lineWidth =2;
+				context.stroke();
+				i=i+50
+			}
+			// // 设置路径 打开路径
+			// context.beginPath();
+			// // 设置起点
+			// context.moveTo(0,0);
+			// // 设置直线终点
+			// context.lineTo(400,400);
+			// // 关闭路径
+			// context.closePath();
+			// // 设置边框样式
+			// context.strokeStyle="pink";
+			// context.lineWidth =10;
+			// // 绘制路径
+			// context.stroke();
+			// 渐变 填充模式 g
+			// 创建线性渐变的对象
+			var g = context.createLinearGradient(50,400,50,300);
+			// 创建径向渐变
+			var g = context.createRadialGradient(50,350,10,50,350,40);
+			// 添加渐变颜色 参数 偏移量 颜色值
+			g.addColorStop(0.5,'#ccc');
+			g.addColorStop(1,'cyan');
+			// 渐变对象的使用
+			context.fillStyle = g;
+			context.fillRect(0,300,100,100);
+
+			// 绘制曲线 贝塞尔曲线 bezierCurve()
+			context.beginPath();
+			context.moveTo(0,0);
+			// context.bezierCurveTo(200,0,400,200,400,400);
+			// 二次贝塞尔曲线
+			context.quadraticCurveTo(400,0,400,400);
+			context.stroke();
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="400px" height="400px"></canvas>
+	
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器</title>
+	<style>
+		div{
+			height:100px;
+			width: 100px;
+		}
+		div:last-child{
+			width: 200px;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			// alert(1);
+		});
+		console.log(jQuery().jquery);
+		//jquery 大量的批处理
+		//操作jQuery对象
+		//在文档加载完毕之后执行
+
+		$(document).ready(function(){
+			//jquery 事件
+			console.log($('div'));
+			
+			//给所有的div绑定了click事件
+			$('div').click(function(event) {
+				// alert(1);
+				//this 指的是DOM节点
+				console.log(this);
+				console.log(event);
+			});
+			//批量的样式设置
+			$('div').css('background','pink');
+			$('div').css({
+				backgroundColor:'cyan',
+				margin:'10px auto',
+			});
+			//获取css的属性值
+			console.log($('div').css('width'));
+		});
+	</script>
+</head>
+<body>
+	hello
+	<div>hello</div>
+	<div>nice</div>
+</body>
+</html>

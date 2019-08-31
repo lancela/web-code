@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>6-ajax</title>
+	<script>
+		
+		// saveOrUpdateCategory({
+		// 	name:'hehe',
+		// 	commemt:'hehe',
+		// 	no:'12',
+		// });
+
+		//deleteCategoryById();
+
+		//batchDeleteCategory();
+
+		//findAllCategory();
+
+		//修改
+		saveOrUpdateCategory({id:'91',name:'saylance',comment:'888',no:90});
+
+		//批量删除
+		function batchDeleteCategory(arr){
+			var http = new XMLHttpRequest();
+			http.open('POST','http://134.175.154.93:8099/manager/category/batchDeleteCategory');
+			http.onreadystatechange= function(){
+				if(http.status===200&&http.readyState===4){
+					//响应的数据
+					console.log(http.responseText);
+				}
+			}
+			//设置请求头
+			http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+
+			//传递数据
+			// http.send(encodeFormData({ids:arr}));
+			http.send(encodeFormData({ids:[100,101,102,103,214].toString()}));
+			findAllCategory();
+
+		}
+
+		//删除
+		function deleteCategoryById(id){
+			var http = new XMLHttpRequest();
+			http.open('GET','http://134.175.154.93:8099/manager/category/deleteCategoryById?id='+id);
+			http.onreadystatechange= function(){
+				if(http.status===200&&http.readyState===4){
+					console.log(http.responseText);
+				}
+			}
+			http.send();
+		}
+		//查找
+		function findAllCategory(){
+			var http = new XMLHttpRequest();
+			http.open('GET','http://134.175.154.93:8099/manager/category/findAllCategory');
+			http.onreadystatechange= function(){
+				if(http.status===200&&http.readyState===4){
+					console.log(http.responseText);
+				}
+			}
+			http.send();
+		}
+		//保存
+		function saveOrUpdateCategory(obj){
+			//发送POST请求.
+			var http = new XMLHttpRequest();
+			http.open('POST','http://134.175.154.93:8099/manager/category/saveOrUpdateCategory');
+			http.onreadystatechange= function(){
+				if(http.status===200&&http.readyState===4){
+					//响应的数据
+					console.log(http.responseText);
+				}
+			}
+			//设置请求头
+			http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+			http.send(encodeFormData(obj));
+			// http.send(encodeFormData({
+			// 	name:'阿聪',
+			// 	commemt:'cgnb',	
+			// 	no:'1',
+			// }));
+		}
+
+		//将js 的对象转换成表单格式的数据
+		function encodeFormData(data){
+				if(!data){
+					return "";
+				}
+				var pairs = [];
+				for(var name in data){
+					if(!data.hasOwnProperty(name)){
+						continue;
+					}
+					if(typeof data[name] == "function"){
+						continue;
+					}
+					var value = data[name].toString();
+					name = encodeURIComponent(name.replace("%20","+"));//编码名字
+					value = encodeURIComponent(value.replace("%20","+"));//编码值
+					pairs.push(name+"="+value);
+				}
+				return pairs.join('&');
+			}
+			
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

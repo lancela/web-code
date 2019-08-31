@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>location</title>
+	<script>
+		console.log(location);
+		console.log(window.location ===document.location);
+		window.onload = function(){
+			var btns = document.getElementsByTagName('button');
+			btns[0].onclick = function(){
+				// location='2-网页动态时间.html';
+				// location.href = '2-网页动态时间.html';
+				// window.location.href = '2-网页动态时间.html';
+				location.assign('3-弹出框.html');
+				// location.replace('2-网页动态时间.html');
+				//在新的选项卡打开页面
+				 //window.open('3-弹出框.html');
+
+			}
+			btns[1].onclick = function(){
+				//参数 true false
+				location.reload();
+			}
+			btns[2].onclick = function(){
+				// history.forward();
+				history.go(1);
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<button>打开新页面</button>
+	<button>刷新</button>
+	<button>下一页</button>
+</body>
+</html>

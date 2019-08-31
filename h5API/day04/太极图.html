@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>太极图</title>
+	<style>
+		
+		canvas{
+			display: block;
+			margin:20px auto 0px;
+			/*border:1px solid pink;*/
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var context = canvas.getContext('2d');
+			var div = document.getElementById("div");
+			// console.log(canvas.height);
+			// console.log(canvas.style.transform);
+
+			// console.log(div.style.height);
+			function draw(){
+				context.beginPath();
+				context.arc(200,200,200,0,2*Math.PI);
+				context.closePath();
+				context.fillStyle='red';
+				context.fill();
+				context.fillStyle='black';
+				context.stroke();
+
+				
+
+				context.beginPath();
+				context.moveTo(200,0);
+				// context.quadraticCurveTo(0,100,200,200);
+				context.bezierCurveTo(50,0,50,200,200,200);
+				context.bezierCurveTo(350,200,350,400,200,400);
+				context.arc(200,200,200,0.5*Math.PI,1.5*Math.PI,true);
+				// context.closePath();
+				context.fillStyle = 'black';
+				context.fill();
+
+				context.beginPath();
+				context.arc(180,100,30,0,2*Math.PI);
+				context.closePath();
+				context.fillStyle='red';
+				context.fill();
+				context.fillStyle='black';
+				context.stroke();
+
+				context.beginPath();
+				context.arc(220,300,30,0,2*Math.PI);
+				context.closePath();
+				context.fillStyle='black';
+				context.fill();
+				context.fillStyle='white';
+				context.stroke();
+			}
+			draw();
+			var x=0
+			setInterval(function(){
+				x=x+10;
+				canvas.style.transform = "rotateZ("+x+"deg)";
+				// var div = document.getElementById("div");
+
+				// console.log(canvas.style.transform);
+			},100);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="400px" height="400px" style="transform:rotateZ(0deg) "></canvas>
+	<button>开关</button>
+</body>
+</html>

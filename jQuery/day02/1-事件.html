@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//点击新增修改改变div 内部的neural
+			// $('button').bind('click','123',function(event){
+			$('button').bind('click','123',function(event){
+				// console.log(event);
+				// console.log(1);
+				console.log(event.data);
+				//点击新增
+				//event.target ==>DOM
+				//$(DOM).html()
+				//$(DOM).text() 有参设置,无参获取
+				if($(event.target).text()==='新增'){
+					$('div').text('新增学生信息');
+				}else if($(event.target).text()==='修改'){
+					$('div').text('修改学生信息');
+				}
+				//点击修改
+			});
+			function handle(){
+				console.log(1);
+			};
+			$('button').bind('click',handle);
+			//解绑
+			$('button').unbind('click',handle);
+			$('button').bind({
+				click:function(){},
+				mouseup:function(){}
+			});
+			$('div').click(function(){
+				alert(1);
+			});
+		});
+	</script>
+</head>
+<body>
+	<button>新增</button>
+	<button>修改</button>
+	<div>标题</div>
+</body>
+</html>

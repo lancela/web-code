@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>4-太极图.</title>
+	<style>
+		canvas{
+			animation-name:myani;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+
+		}
+		@keyframes myani{
+			0%{
+				transform: rotate(0deg);
+			}
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var context = canvas.getContext('2d'); 
+
+			context.beginPath();
+			context.arc(200,200,200,0.5*Math.PI,1.5*Math.PI);
+			context.closePath();
+			context.fillStyle = 'coral'
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,200,200,1.5*Math.PI,0.5*Math.PI);
+			context.closePath();
+			context.fillStyle = 'cyan';
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,100,100,0,2*Math.PI);
+			context.closePath();
+			context.fillStyle = 'coral';
+			context.fill();
+
+			
+
+			context.beginPath();
+			context.arc(200,300,100,0,2*Math.PI);
+			context.closePath();
+			context.fillStyle = 'cyan';
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,100,30,0,2*Math.PI);
+			context.closePath();
+			context.fillStyle = 'cyan';
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,300,30,0,2*Math.PI);
+			context.closePath();
+			context.fillStyle = 'coral';
+			context.fill();
+		}
+	</script>
+</head>
+<body>
+	<canvas width="400px" height="400px" id="canvas"></canvas>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11-包裹节点.</title>
+	<style>
+		.green{
+			background-color: blue;
+			border:1px solid blue;
+			overflow: hidden;
+			margin:10px;
+			float:left;
+		}
+		.outer{
+			border:1px solid blue;
+			overflow: hidden;
+			margin:10px;
+			float:left;
+
+		}
+		.inner{
+			border:1px solid pink;
+			background: :red;
+			height: 50px;
+			width: 50px;
+			float:left;
+			margin:20px;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//外部包绿色的div
+			// $('.inner').wrap($('<div class="green"></div>'));
+			//内部包div
+			// $('.inner').wrapInner($('<div class="green"></div>'));
+			//将所有包裹在一个div 内
+			 $('.inner').wrapAll($('<div class="green"></div>'));
+		});
+	</script>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">one</div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="outer">
+		<div class="inner">one</div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>myAja</title>
+	<style type="text/css">
+	    body{
+	    	position: relative;
+	    }
+		table.altrowstable {
+			margin:20px auto;
+		    font-family: verdana,arial,sans-serif;
+		    font-size:11px;
+		    color:#333333;
+		    border-width: 1px;
+		    border-color: #a9c6c9;
+		    border-collapse: collapse;
+		}
+		table.altrowstable th {
+		    border-width: 1px;
+		    padding: 8px;
+		    border-style: solid;
+		    border-color: #a9c6c9;
+		}
+		table.altrowstable td {
+		    border-width: 1px;
+		    padding: 8px;
+		    border-style: solid;
+		    border-color: #a9c6c9;
+		}
+		.oddrowcolor{
+		    background-color:#d4e3e5;
+		}
+		.evenrowcolor{
+		    background-color:#c3dde0;
+		}
+		.div{
+			display: block;
+			margin: 0 auto ;
+			/*margin-left:200px;*/
+			width: 300px;
+		}
+		.addmsg{
+			width: 420px;
+			height:320px;
+			border:2px solid #ccc;
+			position: absolute;
+			top:20px;
+			left:420px;
+			background-color: #EDE9E9;
+			padding:40px;
+		
+
+		}
+		span{
+			height: 30px;
+			width: 80%;
+			display: inline-block;
+			margin:10px 0;
+
+		}
+		span input{
+			width: 60%;
+			height: 80%;
+			display: inline-block;
+			float:right;
+		}
+		.addmsg button{
+			margin:30px 20px;
+			width: 160px;
+			height: 30px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var baseURL = 'http://134.175.154.93:8099/';
+			//封装的用GET完成数据请求的ajax
+			function myAjaxGet(url,param,handle){
+				var http = new XMLHttpRequest();
+				var op=null;
+				op = param?'?id=':'';
+				http.open('GET',baseURL+url+op+param);
+				console.log(baseURL+url+op+param);
+				http.onreadystatechange=function(){
+					if(http.status===200&&http.readyState===4){
+						console.log(http.responseText);
+						var res = JSON.parse(http.responseText);
+						// handle(http.responseText);
+						handle(res);
+					}
+				}
+				// 设置请求头
+				http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+				// 传递表单格式的数据
+				http.send(encodeFormData(param));
+			}
+
+			//封装的用POST完成数据请求的ajax
+			function myAjaxPost(url,param,handle){
+				var http = new XMLHttpRequest();
+				http.open('POST',baseURL+url);
+				console.log(baseURL+url);
+				http.onreadystatechange=function(){
+					if(http.status===200&&http.readyState===4){
+						var res = JSON.parse(http.responseText);
+						// handle(http.responseText);
+						handle(res);
+					}
+				}
+				// 设置请求头
+				http.setRequestHeader('Content-Type','application/x-www-form-urlencoded;charset=UTF-8');
+				// 传递表单格式的数据
+				http.send(encodeFormData(param));
+			}
+
+			// 将js的对象转换成表单格式数据
+			function encodeFormData(data){
+				if(!data){
+					return "";
+				}
+				var pairs = [];
+				for(var name in data){
+					if(!data.hasOwnProperty(name)){
+						continue;
+					}
+					if(typeof data[name] == "function"){
+						continue;
+					}
+					var value = data[name].toString();
+					name = encodeURIComponent(name.replace("%20","+"));//编码名字
+					value = encodeURIComponent(value.replace("%20","+"));//编码值
+					pairs.push(name+"="+value);
+				}
+				return pairs.join('&');
+			}
+			//批量删除
+			// myAjaxPost('manager/category/batchDeleteCategory',{ids:[200,201,202,203,204].toString()},function(res){
+			// 	console.log(res);
+			// });
+
+			//添加
+			// var add = myAjaxPost('manager/category/saveOrUpdateCategory',{name:'test',comment:'test2',no:1},function(res){
+			// 	console.log(res);
+			// });
+			//查询所有
+			// myAjaxGet('manager/category/findAllCategory','',function(res){
+			// 	console.log(res);
+			// });
+			// 删除
+			// myAjaxGet('manager/category/deleteCategoryById','800',function(res){
+			// 	console.log(res,'---');
+			// });
+			//修改
+			// var add = myAjaxPost('manager/category/saveOrUpdateCategory',{id:'2',name:'test',comment:'test2',no:1},function(res){
+			// 	console.log(res);
+			// });
+
+			var table = document.getElementById('idData');
+			var addMsgBtn = document.getElementsByClassName('addmsg')[0].lastElementChild.firstElementChild;
+			var addOrupdataDiv = document.getElementsByClassName('addmsg')[0];
+			var copytable = table.innerHTML;
+			
+			//获得动态数据,展示到响应的表格上
+			function display(){
+				table.innerHTML = copytable;
+				myAjaxGet('manager/category/findAllCategory','',function(res){
+					console.log(res.data,'12');
+					arr=res.data;
+					arr.forEach(function(item){
+						table.innerHTML+=`
+						<tr>
+							<td><input type="checkbox"></td>
+						    <td>`+item.id+`</td>
+						    <td>`+item.name+`</td>
+						    <td>`+item.comment+`</td>
+						    <td>`+item.no+`</td>
+						    <td>`+item.parent+`</td>
+						    <td><button>删除</button><button>修改</button></td>
+						</tr>`;
+					});	
+				});	
+			}
+			
+			display();
+			//完成删除功能,并附带完成向修改页传入点击修改得到的数据,以便做修改功能
+			table.onclick = function(event){
+				var target = event.target;
+				if(target.innerText==='删除'){
+					console.log(target.parentNode.parentNode.firstElementChild.nextElementSibling);
+					var td =target.parentNode.parentNode.firstElementChild.nextElementSibling;
+					console.log();
+					myAjaxGet('manager/category/deleteCategoryById',td.innerText,function(res){
+						console.log(res,'+++++++++++');
+						display();
+					});
+				}else if(target.innerText==='修改'){
+					//alert(1);
+					var addOrupdataDiv = document.getElementsByClassName('addmsg')[0];
+					addOrupdataDiv.style.display = 'block';
+					addMsgBtn.innerHTML='修改';
+					addOrupdataDiv.firstElementChild.style.display='block';
+					var arr=[];
+					arr.push(event.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText);
+					arr.push(event.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText);
+					arr.push(event.target.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.innerText);
+					arr.push(event.target.parentNode.previousElementSibling.previousElementSibling.innerText);
+					arr.push(event.target.parentNode.previousElementSibling.innerText);
+					console.log(arr);
+					var spans = document.getElementsByTagName('span');
+					console.log(spans);
+					for(var i=0;i<arr.length;i++)
+					spans[i].firstElementChild.value=arr[i];
+					
+				}
+			}
+
+			//完成批量删除事件
+			var bathDeleteBtn = document.getElementsByTagName('div')[0].firstElementChild.nextElementSibling;
+			bathDeleteBtn.onclick = function(){
+				var arr =[];
+				var inputs = document.getElementsByTagName('input');
+				input = Array.prototype.slice.call(inputs,0);
+				var addbtn = document.getElementById('add') ;
+				var inputsResult = input.filter(function(item,index){
+					if(item.checked ===true){
+						console.log(inputs[index].parentNode.nextElementSibling.innerText);
+						arr.push(inputs[index].parentNode.nextElementSibling.innerText);
+					}
+					return item.checked ===true;
+				});
+				console.log(inputsResult);
+				if(inputsResult.length>0){
+					myAjaxPost('manager/category/batchDeleteCategory',{ids:arr.toString()},function(res){
+						console.log(res);
+						display();
+					});
+				}else{
+					alert('no');
+				}
+			}
+
+
+			// 按钮事件 完成打开信息添加或修改的div快
+			var addBtn = document.getElementsByTagName('div')[0].firstElementChild;
+			addBtn.onclick = function(){
+				addMsgBtn.innerHTML='添加';
+				addOrupdataDiv.style.display = 'block';
+				addOrupdataDiv.firstElementChild.style.display='none';
+			}
+
+			// 按钮事件,完成添加或修改
+			addMsgBtn.onclick = function(){
+				var addOrupdataDiv = document.getElementsByClassName('addmsg')[0];
+				var inputs = document.getElementsByTagName('input');
+				input = Array.prototype.slice.call(inputs,0);
+				var arr =[];
+				input.filter(function(item,index){
+					if(item.type ==='text'){
+						arr.push(item.value);
+					}
+				});
+				var obj ={};
+				obj.id=arr[0];
+				obj.name = arr[1];
+				obj.comment = arr[2];
+				obj.no=arr[3];
+				obj.parent = arr[4];
+				if(addMsgBtn.innerText == '添加'){
+					delete obj.id;
+					myAjaxPost('manager/category/saveOrUpdateCategory',obj,function(res){
+					console.log(res);
+					display();
+					});
+				}else if(addMsgBtn.innerText == '修改'){
+					var add = myAjaxPost('manager/category/saveOrUpdateCategory',obj,function(res){
+						console.log(res);
+						display();
+					});
+				}
+				addOrupdataDiv.style.display='none';
+			}
+
+			//点击取消时 , 关闭添加修改信息的模块
+			var cancle = document.getElementsByClassName('addmsg')[0].lastElementChild.lastElementChild;
+			cancle.onclick = function(){
+				var addOrupdataDiv = document.getElementsByClassName('addmsg')[0];
+				addOrupdataDiv.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<!-- Table goes in the document BODY -->
+	<table class="altrowstable" id="idData">
+	<tr>
+		<th></th>
+	    <th>栏目编号</th>
+	    <th>栏目名字</th>
+	    <th>栏目描述</th>
+	    <th>栏目序号</th>
+	    <th>父栏目</th>
+	    <th>操作</th>
+	</tr>
+	
+</table>
+
+<div class="div">
+	<button>增加</button>
+	<button>批量删除</button>
+	<button>查询</button>
+</div>
+<div class="addmsg" style="display: none">
+	<span>栏目编号<input type="text"></span>
+	<span>栏目名字<input type="text"></span>
+	<span>栏目描述<input type="text"></span>
+	<span>栏目序号<input type="text"></span>
+	<span>父栏目<input type="text"></span>
+	<div>
+		<button>添加</button>
+		<button>取消</button>
+	</div>
+	
+</div>
+
+</body>
+
+</html>

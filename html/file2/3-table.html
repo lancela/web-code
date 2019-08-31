@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<script>
+		
+	</script>
+	<style>
+		table th,table td{
+			padding:8px;
+		}
+		table tr {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<table border="1px" cellspacing="0" cellpadding="0" align="center" bgcolor="#EDAFAF" width="300px">
+		<!-- thead tfoot  表头 表尾-->
+		<!-- tr 一行 td 单元格 -->
+		<!-- <tbody> -->
+		<!-- </tbody> -->
+		<tr>
+			<th>学号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+		</tr>
+		<tr align="center">
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+		</tr>
+		<tr align="center">
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+		</tr>
+		
+	
+	</table>
+
+	<hr />
+	<table border="1" width="300px"  align="center" >
+		<caption align="top">表的标题</caption>
+		<thead>
+			<tr>
+				<th>1</th>
+				<th>1</th>
+				<th>1</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+		</tfoot>
+	</table>
+	<!-- 单元格的合并 -->
+	<table width="200px" border="1" cellpadding="10" cellspacing="0" align="center">
+		<!-- ***********************colgroup里面包col用于将同一列或多列绑定,进行相同的处理************************** -->
+		<colgroup>
+			<col />
+			<!-- 接下来的三列当做同一列处理 -->
+			<col span="1" style="background-color: pink" />
+		</colgroup>
+
+		<tr align="center">
+			<td colspan="2" rowspan="2">11</td>
+			<!-- <td>12</td> -->
+			<td>13</td>
+			<td>14</td>
+		</tr>
+		<caption align="top">表2</caption>
+		<tr align="center">
+			<td colspan="2">21</td>
+			<td >23</td>
+			<td>24</td>
+		</tr>
+		<tr align="center">
+			<td>31</td>
+			<td>32</td>
+			<td>33</td>
+			<td>34</td>
+		</tr>
+		<tr align="center">
+			<td>41</td>
+			<td>42</td>
+			<td>43</td>
+			<td>44</td>
+		</tr>
+	</table>
+	
+</body>
+</html>

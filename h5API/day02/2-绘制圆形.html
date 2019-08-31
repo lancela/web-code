@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制圆形</title>
+	<style>
+		canvas{
+			border:1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			// 获得画布的DOM对象
+			var canvas = document.getElementById('canvas');
+			//获得2d上下文对象
+			var context = canvas.getContext('2d');
+			// 绘制圆 绘制圆的路径,进行填充或是边框的绘制
+			// 开始创建路径(打开路径)
+			context.beginPath();
+			// 定义路径的形状 参数分别为：圆心x坐标，圆心y坐标，半径，开始角度，结束角度，绘制方向(true为逆时针，false为顺时针)
+			context.arc(100,100,100,0,Math.PI,true);
+			// 关闭路径 , (若没有关闭)下次绘制的起点为此次的终点
+			// context.closePath();
+			// 填充或边框绘制
+			context.fill();
+			// context.stroke();
+			// context.clearRect(100,100,100,100);
+			// context.beginPath();
+				
+			// 若没打开,起点为上次的终点
+			// context.beginPath();
+			context.arc(300,300,50,Math.PI,0,true);
+			context.closePath();
+			// context.fill();
+			context.fill();
+			context.stroke();
+			// context.beginPath();
+			// context.moveTo(0,0);
+			// context.lineTo(400,400);
+			// context.closePath();
+			// context.stroke();
+		};
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="400px" height="400px"></canvas>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script>
+		getAllData();
+		//js 原生的ajax
+		function getAllData(){
+			//创建实例
+			var http = new XMLHttpRequest();
+			//发送请求的方式,
+			//http.open('GET','http://134.175.154.93:8099/manager/category/findAllCategory');
+			http.open('GET','http://134.175.154.93:8099/manager/category/findAllCategory');
+			//监听HTTP对象的状态改变
+			http.onreadystatechange = function(){
+				if (http.status===200&&http.readyState===4){
+					console.log(http.responseText);
+					var res= http.responseText;
+					console.log(JSON.parse(res));
+					console.log(JSON.parse(res).data);
+					//遍历数组,追加节点
+					
+				
+			    }
+				
+			}
+			http.send();
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

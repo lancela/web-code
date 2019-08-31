@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			border: 1px solid red;
+			margin: 10px;
+		}
+
+		/*选中每个div的第一个孩子*/
+		/*div>*:first-child{
+			background-color: coral;
+		}*/
+
+		/*选中每个div的最后一个孩子*/
+		/*div>*:last-child{
+			background-color: coral;
+		}*/
+
+		/*选中每个div的第二个个孩子*/
+		/*div>*:nth-child(2)*/
+		/*div>*:nth-child(odd)*/
+		/*div>*:nth-child(even)*/
+		/*div>*:nth-child(2n+1)*/
+		
+		/*选中每个div的倒数第2个孩子*/
+		/*div>*:nth-last-child(2){
+			background-color: coral;
+		}*/
+
+		/*每种类型中的第一个*/
+		div>*:first-of-type{
+			background-color: coral;
+		}
+
+		/*每种类型中的最后一个*/
+		div>*:last-of-type{
+			background-color: coral;
+		}
+
+		/*每种类型的第几个*/
+		div>*:nth-of-type(2){
+			background-color: coral;
+		}
+
+
+		/*每种类型的倒数第几个*/
+		div>*:nth-last-of-type(2){
+			background-color: coral;
+		}
+
+
+
+		table{
+			border: 1px solid #444;
+			/*表格的边框合并*/
+			border-collapse: collapse;
+		}
+		/*thead>tr:only-child{
+			background-color: #ccc;
+		}*/
+		/*为什么会选中两个tr*/
+		table tr:nth-child(1){
+			background-color: #ccc;
+		}
+		tbody>tr:hover{
+			background-color: #eee;
+		}
+		tr{
+			height: 50px;
+		}
+		th,td{
+			width: 100px;
+			border: 1px solid #444;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<p>p1</p>
+		<p>p2</p>
+		<span>span1</span>
+		<span>span2</span>
+	</div>
+	<div>
+		<p>p1</p>
+		<p>p2</p>
+		<span>span1</span>
+		<span>span2</span>
+		<span>span3</span>
+		<span>span4</span>
+	</div>
+	<div>
+		<span>span</span>
+	</div>
+	
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

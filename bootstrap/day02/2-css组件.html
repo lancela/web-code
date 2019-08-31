@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图标</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
+	<style>
+		body{
+			overflow-x:hidden; 
+		}
+		.info-div{
+			width: 200px;
+			height: 150px;
+			position: absolute;
+			top:10px;
+			right:-210px;
+			/*display: none;*/
+			opacity: 0.4,
+		}
+	</style>
+	<script>
+		$(function(){
+			$('#del-btn').click(function(){
+				// alert(1);
+				$('.info-div').animate({
+					right: '10px',
+					opacity:1,
+					
+				},2000);
+				setTimeout(function(){
+					$('.info-div').fadeOut(1000,function(){
+						$('.info-div').css({
+							right:'-210px',
+							opacity:0.4,
+							display:'block',
+						});
+					});
+				},2000);
+				// $('.info-div').removeClass('hidden');
+				// $('.info-div').fadeIn(1000);
+			});
+			$('close-btn').click(function(){
+				// TODO
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="well">
+			<button class="btn btn-primary">
+				<span class="glyphicon glyphicon-download"></span> 下载				
+			</button>
+			<button id="del-btn" class="btn btn-success">
+				删除
+			</button>
+			<br>
+			<br>
+			<br>
+			<!-- alert组件 -->
+			<div class="alert alert-success alert-dismissable" >
+				<!-- <button class="close" data-dismiss="alert">&times;</button> -->
+				<button class="close"  id="close-btn">&times;</button>
+
+				<div>hello</div>
+
+			</div>
+			
+			
+		</div>
+
+	</div>
+	<!-- 右上角提示框 -->
+	<div class="info-div">
+		<div class="alert alert-success alert-dismissable">
+			<button class="close" data-dismiss="alert">&times;</button>
+			<div>删除成功</div> 
+		</div>
+	</div>
+</body>
+</html>

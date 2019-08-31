@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12-节点编列</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			var $result = $(".outer").children('.inner');
+			// console.log($result);
+			// console.log($('.outer>.inner'));
+			var $result = $(".outer").find('.inner');
+			console.log($result);
+			console.log($('.outer .inner'))
+			var $result = $('.outer').next();
+			var $result = $('.outer').prev();
+			var $result = $('.outer').siblings();
+			var $result = $('.outer').closest('.inner');
+			// var $result = $('.inner').closest('.outer');
+			var $result = $('.inner').parent('.outer');
+			var $result = $('.inner').parents();
+			console.log($result);
+		});
+	</script>
+</head>
+<body>
+	<a href=""></a>
+	<div class="outer">
+		<div class="outer">
+			<div class="inner"></div>
+		</div>
+		<div class="inner">子代inner</div>
+		<div>
+
+			<div class="inner">
+				后代inner
+			</div>
+		</div>
+	</div>
+	<span class="inner"></span>
+</body>
+</html>

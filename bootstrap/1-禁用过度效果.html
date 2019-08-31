@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>禁用过度效果</title>
+	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script src="./bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
+	<script>
+		$.support.transition = false;
+		$(function(){
+			
+		})
+	</script>
+	<style>
+		div{
+			height: 100px;
+			width:100px;
+			border:1px solid red;
+			animation-name: myani;
+			animation-duration: 2s;
+		}
+		@keyframes myani{
+			0%{
+				transform: scale(1);
+			}
+			100%{
+				transform: scale(2);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父子浮动</title>
+	<style>
+
+		/*解决margin-top 塌陷问题*/
+		/*.clearfix:before{
+			content:"";
+			display:table;
+		}*/
+
+
+		/*清除浮动的第三种方式*/
+		/*.clearfix:after{
+			content: "";
+			display: table;
+			clear:both;
+		}
+		*/
+		.clearfix:before,.clearfix:after{
+			content: "";
+			display: table;
+		}
+		.clearfix:after{
+			clear:both;
+		}
+
+		ul{
+			border:1px solid blue;
+			list-style: none;
+			/*第一种方式*/
+			/*overflow: hidden;*/
+		}
+		li{
+			border:1px solid red;
+			width: 100px;
+			height: 100px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<!-- <ul class="clearfix"> -->
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<div style="clear:both";">
+			
+		</div>
+		<!-- 第二种方法 -->
+		<!-- <div style="clear:both"></div> -->
+	</ul>
+</body>
+</html>

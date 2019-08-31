@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var div = document.getElementsByTagName('div')[0];
+			var btn = document.getElementsByTagName('button')[0];
+
+			div.onclick = function(){
+				alert('1');
+			}
+			btn.onclick = function(){
+				console.log(event);
+				div.onclick = null;
+				alert('div解绑成功');
+				this.style.background = '#CCC';
+				//实现只点击一次的需要
+				this.onclick= null;
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div>点我</div>
+	<button>div解绑</button>
+</body>
+</html>

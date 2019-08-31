@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0px;
+		}
+		.parent{
+			border:1px solid red;
+			position: relative;
+			width: 400px;
+			height: 400px;
+		}
+		canvas{
+			border:1px solid pink;
+		}
+		#big-canvas{
+			position: absolute;
+			left: 400px;
+			top:100px;
+			/*display: none;*/
+		}
+		#bd-canvas{
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0.6;
+			display: none;
+			background-color: pink;
+			z-index: 2;
+			width:80px;
+			height: 80px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var parent = document.getElementsByClassName('parent')[0];
+			console.log(parent.offsetLeft);
+			console.log(parent.offsetTop);
+			// 获取convas和context
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			var bigCanvas = document.getElementById('big-canvas');
+			var bigContext = bigCanvas.getContext('2d');
+			var bdCanvas = document.getElementById('bd-canvas');
+			// var bdContext = bdCanvas.getContext('2d');
+			
+			//绘制 第一个 canvas 中的图片
+			var img = new Image();
+			img.src = '../../6_bs/day03/image/pt1.jpeg';
+			img.onload = function(){
+				context.drawImage(img,0,0,400,400);
+			}
+			//绘制第三个 bgCanvas的波点的图片
+			// var img2 = new Image();
+			// img2.src = './images/bd.jpg';
+			// img2.onload = function(){
+			// 	bdContext.drawImage(img2,0,0,80,80);
+			// }
+			var img3 = new Image();
+			img3.onload = function(){
+				// bdContext.drawImage(img2,0,0,80,80);
+				// 将第一个画布中的100,100,100,100 绘制到第二个的00 200 200
+				bigContext.drawImage(canvas,100,100,100,100,0,0,200,200);
+			}
+			// 
+			//将第一个画布中的100，100开始的100*100宽高的区域，
+			//绘制到第二个画布中的0，0位置开始的，200*200的宽高的
+			// bigCanvas.drawImage(canvas,100,100,100,100,0,0,200,200);
+			canvas.onmousemove = function(){
+				// 显示第二个和第三个画布
+				bigCanvas.style.display = 'block';
+				bdCanvas.style.display='block';
+				// var sx = event.clientX;
+				// var sy =event.clientY;
+				// DOM.offsetLeft 某个节点的左偏移
+				// DOM.offsetTop  某个节点的上偏移
+				// parent.offsetLeft parent.offsetTop 某个dom节点的左偏移和上偏移
+				var sx = event.pageX-parent.offsetLeft - 40;
+				var sy =event.pageY- parent.offsetTop - 40;
+				// console.log(event.pageX,event.pageY);
+				// 开始复制的位置的xy坐标
+				// 光标在 视口区的位置
+				event.clientX;
+				event.clientY;
+				// 光标在文档 页面的位置
+				event.pageX;
+				event.pageY;
+				// 光标在屏幕的位置
+				event.screenX;
+				event.screenY;
+
+				// if(sx>0&&sy>0&&sx<320&&sy<320){
+				// 	// 清空bigContext
+				// 	bigContext.clearRect(0,0,200,200);
+				// 	bigContext.drawImage(canvas,sx,sy,80,80,0,0,200,200);
+				// }
+				sx<0?sx=0:sx=sx;
+				sy<0?sy=0:sy=sy;
+				sx>320?sx=320:sx=sx;
+				sy>320?sy=320:sy=sy;
+				// 清空bigContext画布
+				bigContext.clearRect(0,0,200,200);
+				bigContext.drawImage(canvas,sx,sy,80,80,0,0,200,200);
+				// 控制波点画布的位置
+				bdCanvas.style.left = sx+'px';
+				bdCanvas.style.top = sy+'px';
+			};
+			// console.log(parent);
+			// 光标离开时设置bigCanvas bdCanvas两个隐藏
+			parent.onmouseleave = function(){
+				// console.log(event.screenX,screenY); 
+				bigCanvas.style.display = 'none';
+				bdCanvas.style.display = 'none';
+			}
+
+		};
+	</script>
+</head>
+<body>
+	<div class="parent">
+		<!-- 原图 -->
+		<canvas id="canvas" width="400px" height="400px"> </canvas>
+		<!-- 放大区域 内容跟鼠标变-->
+		<!-- <canvas id="big-canvas" width="200px" height="200px"></canvas> -->
+		<canvas id="big-canvas" width="200px" height="200px"></canvas>
+		<!-- 半透明的波点,位置跟鼠标变 -->
+		<div id="bd-canvas" ></div>
+	</div>
+</body>
+</html>

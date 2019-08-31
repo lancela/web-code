@@ -1,0 +1,20 @@
+拖放API
+	拖放元素
+		是一个可以拖放的元素,img a 默认是可拖放的元素
+		div设置成可拖放的元素, draggable = 'true'
+		拖放事件
+			dragstart
+			drag
+			dragend
+	目标元素
+		放置拖放元素的元素
+		设置可放置的目标元素
+			在dragover事件内,阻止默认行为
+		放置事件
+			dragenter 进入目标事件
+ 			dragover 在目标元素内部活动的事件
+			drop f放置事件
+	事件的顺序
+		dragstart --> drag-->
+		dragenter-->dragover-->drop
+		-->dragend

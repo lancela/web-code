@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3-音乐播放器</title>
+	<script>
+			var oEm=document.getElementById("em")
+			var oSpan=document.getElementById("total_time")
+			var oPrev=document.getElementById("prev")
+			var oPlay=document.getElementById("play")
+			var oNext=document.getElementById("next")
+			var oAudio=document.getElementById("audio")
+			var oRdy=document.getElementById("rdy")
+			var oCur=document.getElementById("cur")
+			var oBtnr=document.getElementById("btn-r")
+			var oVolume=document.getElementById("volume")
+			var oBarbgb=document.getElementById("barbg-b")
+			var oVbg=document.getElementById("vbg")
+			var oCur1=document.getElementById("vbg-cur")
+			var oBtn=document.getElementById("vbg-btn")
+			var oBf=document.getElementById("icn-bf")
+			var oNone=document.getElementById("list-1")
+			var oUl=document.getElementById("list-ul")
+			var oLi=oUl.getElementsByTagName("li")
+			//console.log(oLi)
+			
+			var num=0
+			var arr=["video/2.mp3","video/3.mp3","video/4.mp3","video/5.mp3","video/6.mp3"]
+			var arr1=["明日之星","今天有酒今天醉","THE girl","喜欢你"]
+			oAudio.src=arr[num]
+			//转换总时长
+			oAudio.addEventListener("canplay",function(){
+				oSpan.innerHTML = getMin(this.duration)
+			})
+			
+			//点击开始播放
+			oPlay.οnclick=function(){
+				if (oAudio.paused) {
+					oAudio.play()
+					oPlay.style.backgroundPositionY = -165+"px"
+				}else{
+					oAudio.pause()
+					oPlay.style.backgroundPositionY = -204+"px"
+				}
+			}
+			
+			//监听进度变化
+			oAudio.οntimeupdate=function(){
+				var pre=Math.floor(oAudio.currentTime/oAudio.duration*493)
+				oCur.style.width=pre+"px"
+				oEm.innerHTML=getMin(oAudio.currentTime)
+				oBtnr.style.left=oCur.style.width
+				
+			}
+			
+			//点击进度变化
+			oRdy.οnclick=function(e){
+				var l=e.clientX-646-oRdy.offsetLeft
+				oAudio.currentTime=(l/493)*oAudio.duration
+				console.log(l)
+				
+				//没完善
+			}
+			
+			oBtnr.οnmοusedοwn=function(e){
+				document.οnmοusemοve=function(e){
+					var l=e.clientX-646-oRdy.offsetLeft
+					oAudio.currentTime=(l/493)*oAudio.duration
+				}
+				document.οnmοuseup=function(){
+					document.οnmοusedοwn=null
+					document.οnmοusemοve=null
+				}
+				return false
+			} 
+			
+			//自动播放
+			oAudio.addEventListener("ended",function(){
+				num++
+				document.οnmοusedοwn=null
+				document.οnmοusemοve=null
+				oPlay.style.backgroundPositionY = -164+"px"
+				oAudio.src=arr[num]
+				oAudio.play()
+			})
+			
+			//上一首
+			oNext.οnclick=function(){
+				oPlay.style.backgroundPositionY = -204+"px"
+				num++
+				if (num>arr.length-1) {
+					num=0
+				}
+				oAudio.src=arr[num]
+			}
+			
+			//下一首
+			oPrev.οnclick=function(){
+				oPlay.style.backgroundPositionY = -204+"px"
+				num--
+				if (num<0) {
+					num=arr.length-1
+				}
+				oAudio.src=arr[num]
+			
+				
+			}
+			
+			//点击音频
+			oVolume.οnclick=function(e){
+				//alert(1)
+				oBarbgb.style.display="block"
+				oVbg.style.display="block"
+			}
+			
+			//点击音频的进度条
+			/*oVbg.οnclick=function(e){
+				var l=e.clientY-78-this.offsetTop
+				oCur1.style.height=l+"px"
+				oBtn.style.top=l+"px"
+				oAudio.volume=l/97
+				
+				console.log(l)
+			}*/
+			
+			//拖动音频进度条中的点
+				oBtn.οnmοusedοwn=function(e){
+				document.οnmοusemοve=function(e){
+					var l=e.clientY-97-this.offsetTop
+					oBtn.style.top=l+"px"
+					//oAudio.volume=l/97
+				}
+				document.οnmοuseup=function(){
+					document.οnmοusedοwn=null
+					document.οnmοusemοve=null
+				}
+				return false
+			} 
+			
+			//点击播放列表
+			var str=''
+			oBf.οnclick=function(){
+				oNone.style.display="block"
+				oBf.innerHTML=arr1.length
+				//console.log(oLi.length)
+				for (var i=0;i<arr1.length;i++) {
+				str+='<li><a>'+arr1[i]+'</a></li>'
+				}
+				oUl.innerHTML=str
+			}
+			
+			
+			//获取分钟的函数
+			function getMin(time){
+				var m = Math.floor(time/60)
+				var s = Math.floor(time%60)
+				if(m<=9){
+					m="0"+m
+				}
+				if(s<=9){
+					s = "0"+s
+				}
+				return m+":"+s
+			}
+		</script>
+</head>
+<body>
+	<div class="bg">
+			<div class="hand">
+				<div class="left">
+					<a class="btn"></a>
+				</div>
+			</div>
+			<div class="wrap">
+				<div class="btns">
+					<a class="prev" title="上一首" id="prev"></a>
+					<a class="ply" title="暂停" id="play"></a>
+					<a class="next" title="下一首" id="next"></a>
+				</div>
+				<div class="head">
+					<img src="img/6.jpg" />
+					<a class="mask"></a>
+				</div>
+				<div class="play">
+					<div class="words"></div>
+					<div class="m-pbar">
+						<div class="barbg">
+							<div class="rdy" id="rdy"></div>
+							<div class="cur" id="cur" style="width: 0%;">
+								<span class="btn-r" id="btn-r"></span>
+							</div>
+						</div>
+						<span class="j-flag time" id="total_time">
+							00:00
+						</span>
+						<em class="em-x">/</em>
+						<em id="em" class="em">00:00</em>
+					</div>
+				</div>
+				
+				<div class="oper">
+					<a class="icn icn-add" title="收藏"></a>
+					<a class="icn icn-share" title="分享"></a>
+				</div>
+				
+				
+				<div class="ctrl">
+					<div class="m-vol">
+						<div class="barbg-b" id="barbg-b"></div>
+						<div class="vbg" id="vbg">
+							<div class="vbg-cur" id="vbg-cur"></div>
+							<span class="vbg-btn" id="vbg-btn"></span>
+						</div>
+						<a class="icn icn-vol" id="volume"></a>
+						<a class="icn icn-loop" title="循环"></a>
+						<span class="add">
+							<a class="icn icn-list" id="icn-bf" title="播放列表">0</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="list" id="list-1">
+			<ul class="list_ul" id="list-ul">
+				
+			</ul>
+		</div>
+		
+		<audio id="audio"></audio>
+
+</body>
+</html>

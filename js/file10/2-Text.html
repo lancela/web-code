@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本类型</title>
+	<script>
+		window.onload = function(){
+			var text = document.body.firstChild;
+			console.log(text);
+			console.log(text.length);
+
+			text.appendData('world');
+			//分割节点 参数是索引
+			text.splitText(1);
+			console.log(document.body.childNodes);
+			document.body.normalize();
+			console.log(document.body.childNodes);
+			console.log(text);
+			console.log(text.length);
+
+			//console.log(text.substringData(5,5));
+			console.log(text.deleteData(5,1));
+			console.log(text);
+			console.log(text.length);
+		}
+	</script>
+</head>
+<body>hello</body></html>

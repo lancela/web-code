@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a标签的伪类</title>
+	<style>
+		a{
+			/*去掉下划线,text-decoration*/
+			text-decoration: none;
+			/*设置a标签未访问过的样式*/
+			text-decoration:none;
+
+		}
+		a:link{
+			/*设置a标签未访问过的样式*/
+			color: orange;
+		}
+		/*访问*/
+		a:visited{
+			color: pink;
+		}
+		/*悬停*/
+		a:hover{
+			color: cyan;
+			cursor: wait;
+		}
+		/*点击*/
+		a:active{
+			color: #ccc;
+		}
+		span{
+			/*光标为手型*/
+			/*pointer text / help /crosshair*/
+			cursor: crosshair;
+		}
+	</style>
+</head>
+<body>
+	<a href="./6-属性选择器.html">跳转</a>
+	<a href="./5-后代选择器.html">跳转2</a>
+	<span>span</span>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9-删除节点</title>
+	<style>
+		.outer{
+			border:1px solid blue;
+			overflow: hidden;
+
+		}
+		.inner{
+			border:1px solid pink;
+			background: :red;
+			height: 50px;
+			width: 50px;
+			float:left;
+			margin:20px;
+		}
+		.iner{
+			border:1px solid pink;
+			background: :red;
+			height: 50px;
+			width: 50px;
+			float:left;
+			margin:20px;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		
+		$(function(){
+
+			$('.inner').click(function(){
+				alert(1);
+			});
+			var $result = $('.outer .inner:first-child');
+			var $result = $('.outer .inner:contains("one")');
+			console.log($result);
+			// console.log($('.outer .inner:contains("one"):first'));
+			// // var $rm = $result.remove($('.outer .inner:contains("one"):first'));
+			// var $rm = $result.remove('.inner');
+
+			var $rm = $result.detach('.inner2');
+			//console.log($rm === $result);
+			console.log($rm);
+
+			$('.outer').append($rm[0]);
+			// $('.outer').empty();
+
+		});
+	</script>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">one</div>
+		<div class="inner">two</div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="outer">
+		<div class="inner inner2">one</div>
+		<div class="inner">two</div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+</body>
+</html>

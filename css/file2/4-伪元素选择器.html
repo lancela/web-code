@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪元素选择器</title>
+	<style>
+		/*在之前添加内容*/
+		section p::before{
+			content: "*";
+			color: red;
+		}
+		/*在之后添加内容*/
+		section p::after{
+			content: "*";
+			color: yellow;
+		}
+		form span::before{
+			content: "*";
+			color: red;
+		}
+		/*选中第一个字符*/
+		div::first-letter{
+			font-size: 30px;
+			color: coral;
+		}
+		/*选中第一行文本*/
+		div::first-line{
+			color: navy;
+			font-size:20px;
+		}
+		/*用户选中的文本的设置*/
+		div::selection{
+			background-color: red;
+			color: cyan;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div>
+		第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话第1段话
+		
+	</div>
+	<div>
+		<article>
+			<section>
+				<p>第1段话</p>
+				<p>第2段话</p>
+				<p>第3段话</p>
+				<p>第4段话</p>
+
+			</section>
+		</article>
+		<form action="">
+			<span>用户名</span> <input type="text" required>
+			<span>密码 </span><input type="password" required>
+			<input type="submit">
+		</form>
+	</div>
+</body>
+</html>

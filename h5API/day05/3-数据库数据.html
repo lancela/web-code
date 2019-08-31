@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="http://www.treejs.cn/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  	<script type="text/javascript" src="http://www.treejs.cn/v3/js/jquery-1.4.4.min.js"></script> 
+  	<script type="text/javascript" src="http://www.treejs.cn/v3/js/jquery.ztree.core.js"></script> 
+	<title>3-数据库数据</title>
+	<script>
+		// 数据保存到数据库 
+		// 从数据库获取数据
+		// 封装数据 显示在tree中
+
+
+		
+		// 显示数据
+		var cates = [
+			{id:1,name:'根编目',cate_path:null},
+			{id:2,name:'Java课程',cate_path:'1.2'},
+			{id:3,name:'Spring课程',cate_path:'1.2.3'},
+			{id:6,name:'Servlet课程',cate_path:'1.2.6'},
+			{id:4,name:'SpringBoot课程',cate_path:'1.2.3.4'},
+			{id:5,name:'Web课程',cate_path:'1.5'},
+			{id:7,name:'React课程',cate_path:'1.5.7'},
+			{id:8,name:'redux课程',cate_path:'1.5.7.8'}
+			];
+
+			// 创建数据库
+			var request = indexedDB.open('zResource','1.0');
+			request.onupgradeneeded = function(){
+				// 
+				var db= this.result;
+				db.createObjectStore('category',{
+					keyPath:'id',
+					autoIncrement:true
+				});
+
+			}
+			// 添加数据
+			request.onsuccess = function(){
+				console.log("添加数据");
+				var db = this.result;
+				var ts = db.transaction('category','readwrite');
+				var store = ts.objectStore('category');
+				cates.forEach(function(item){
+					// 编目对象 item
+					store.put(item);
+				});
+			}
+			// 从数据库中获取数据
+			request.onsuccess = function(){
+				console.log("获取数据");
+				var db = this.result;
+				var ts = db.transaction('category','readwrite');
+				var store = ts.objectStore('category');
+				var req = store.getAll();
+				req.onsuccess = function(){
+
+					// cates = this.result;  //从数据库中获取的数据
+					// 1.配置对象
+					var setting = {};
+					// 2.显示数据
+					// 过滤根编目
+					cates = this.result.filter(function(item){
+						return item.cate_path;
+					});
+					// 父编目的数组里有个孩子编目的数组,放置该编目的孩子编目
+					// 加属性 pid child = []
+					// 通过 pid 找到与之对应的父对象 将该编目添加到父编目的child中
+					// 添加 pId chinds
+					cates.forEach(function(item){
+						item.children = [];
+						// 获取每个对象的父编目的id值
+						// var parentArr = item.cate_path.split('.');
+						var parentId = item.cate_path.split(".").slice(-2,-1).toString();
+						// console.log( parentId);
+						item.parent_id = parentId;
+					});
+					// console.log(cates);
+					// 将子编目放到父编目对象的children数组中
+					cates.forEach(function(item){
+						var parents = cates.filter(function(pItem){
+							return item.parent_id == pItem.id;
+						})
+						// console.log(parents);
+						if(parents.length>0){
+							parents[0].children.push(item);
+						}
+					})
+					// console.log(cates);
+					// 3.过滤获取一级编目
+					// 通过cate_path的长度去判断
+					var result = cates.filter(function(item){
+						return  item.cate_path.split('.').length===2;
+					});
+					console.log(result);
+					$(function(){
+						$.fn.zTree.init($("#treeDemo"), setting, result);
+					});
+				}
+			}
+
+
+
+			
+			
+	</script>
+</head>
+<body>
+	<div class="contain_wrap">
+		<div class="zTreeDemoBackground left">
+			<div class="zTreeDemoBackground"> 
+			 	<ul id="treeDemo" class="ztree">
+			 	</ul>
+			 </div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+	 	body>div{
+	 		position: relative;
+	 		float: left;
+	 		width:400px;
+	 		height: 400px;
+	 		overflow: hidden;
+	 		/*background-color: pink;*/
+	 	}
+		.magnifil{
+			margin-left: 10px;
+
+		}
+		.source>img{
+			display: inline-block;
+			max-width: 400px;
+		}
+		canvas{
+			background-color: black;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var img = document.getElementsByTagName('img')[0];
+			console.log(img);
+			img.onmousemove = function(){
+				// console.log(event.screenX,event.screenY);
+				console.log(img.offsetLeft,"___");
+				console.log(img.style.width);
+				console.log(img.style.height);
+				console.log(img.style);
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="source">
+		<img src="../../6_bs/day03/image/pt3.jpeg" alt="">
+	</div>
+	<div class="magnifil">
+		<canvas width="400px" height="400px" id="canvas"> 
+			
+		</canvas>
+	</div>
+</body>
+</html>

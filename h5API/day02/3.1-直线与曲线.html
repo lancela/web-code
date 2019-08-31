@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>直线与曲线</title>
+	<style>
+		canvas{
+			border:1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			function draw(){
+				context.strokeStyle = "coral";
+				context.lineWidth = 4;
+				context.stroke();
+			}
+			function drop(centerX,centerY){
+				// var canvasdrop = document.getElementById('canvas');
+				// var contextdrop = canvasdrop.getContext('2d');
+				// 绘制转折点
+				context.beginPath();
+				context.arc(centerX,centerY,5,0,2*Math.PI);
+				context.closePath();
+				// 设置渐变填充样式
+				var gradient = context.createRadialGradient(centerX,centerY,2,centerX,centerY,5);
+				gradient.addColorStop(0,'skyblue');
+				gradient.addColorStop(1,'coral');
+				context.fillStyle = gradient;
+				context.fill();
+			}
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			// 设置路径 
+			context.beginPath();
+			// 直线的起点
+			context.moveTo(0,0);
+			// 直线的终点
+			context.lineTo(100,100);
+			draw();
+			drop(100,100);
+			context.lineTo(200,100);
+			draw();
+			drop(200,100);
+			context.lineTo(300,200);
+			draw();
+			drop(300,200);
+			context.lineTo(400,400);
+			draw();
+			// context.closePath();
+			
+			// 在画布上绘制路径
+			// context.fillStyle = 'red';
+			// context.fill();
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="400px" height="400px"></canvas>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		div{
+			font-size: 30px;
+			/*不可继承border*/
+			border:1px solid red;
+		}
+		span{
+			/*font-size: 10px;*/
+			/*初始化样式 不与父级相关联*/
+			/*将可继承属性设置成不可继承*/
+			font-size: initial;
+			/*将不可继承的属性设置成可以继承*/
+			border: inherit;
+			/*unset 该怎样怎样*/
+
+		}
+	</style>
+<body>
+	<div>
+		div标签
+		<p>p标签</p>
+		<span>span标签</span>
+
+	</div>
+</body>
+</html>

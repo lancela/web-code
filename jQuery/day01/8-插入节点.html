@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>8-插入节点.html</title>
+	<style>
+		.outer{
+			border:1px solid pink;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"> </script>
+	<script>
+		$(function(){
+			var $newSpan = $('<span>world</span>');
+			//console.log($newSpan);
+			//$('.outer').append($newSpan);
+			//浅复制 不复制事件
+			// var $clone = $newSpan.clone();
+			// $('.outer').prepend($clone);
+			//在之前加
+			// $('.outer').after($newSpan);
+			// //在之后加
+			// $('.outer').before($newSpan);
+			// $('.outer').append($newSpan);
+			// $newSpan.appendTo($('.outer'));
+			// $('.outer').prepend($newSpan);
+			// $newSpan.prependTo($('.outer'));
+			$('.outer').after($newSpan);
+			$newSpan.insertAfter($('.outer'));
+
+
+		})
+	</script>
+</head>
+<body>
+
+	<div class="outer" style="border:1px solid pink">
+		<span>hello</span>
+	</div>
+
+	<div class="outer">
+		<span>hello</span>
+	</div>
+
+</body>
+</html>

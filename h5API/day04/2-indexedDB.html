@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>indexedDB</title>
+	<script>
+		<!-- 火狐谷歌 -->
+		window.onload = function(){
+			var btns = document.getElementsByTagName('button');
+			// 创建对象产库 在版本更新时需要
+			btns[0].onclick = function(){
+				var request = indexedDB.open('user','2.0');
+				request.onsuccess = function(event){
+					// 获取数据库对象
+					console.log('链接成功或创建成功');
+					console.log(this.result);
+					console.log(request.result);
+					console.log(event.target.result);
+					// 获取事务对象,获取对象仓库,增删查改
+					// 
+				}
+				// 版本更新事件
+				request.onupgradeneeded = function(event) {
+					console.log("版本更新");
+					// 创建对象仓库
+					// 判断仓库是否存在
+					var db = this.result;
+					 if(db.objectStoreNames.contains("Student")){
+	                    db.deleteObjectStore("Student");
+	                }
+	                //创建对象仓库 参数 :
+	                var store = db.createObjectStore("Student",{
+	                    keyPath:"id",
+	                    autoIncrement:true
+	                });
+	                console.log("student对象已创建");
+					}
+			}
+			
+			// 获取数据库对象
+			btns[1].onclick = function(){
+				// 数据库
+				var request = indexedDB.open('user');
+				request.onsuccess = function(){
+					var db = this.result;
+					// 获取事务
+					// var ts = db.transaction(['Student'],'readwrite');
+					var ts = db.transaction('Student','readwrite');
+					// 获取对象仓库
+					var store = ts.objectStore('Student');
+					console.log(store);
+				}
+			}
+			// 添加
+			btns[2].onclick = function(){
+				// 数据库
+				var request = indexedDB.open('user');
+				request.onsuccess = function(){
+					var db = this.result;
+					// 获取事务
+					// var ts = db.transaction(['Student'],'readwrite');
+					var ts = db.transaction('Student','readwrite');
+					// 获取对象仓库
+					var store = ts.objectStore('Student');
+					console.log(store);
+					var req = store.put({
+					name:'zhangsan',
+					age:12,
+					id:2
+					});
+					// var req = store.add({
+					// name:'zhangsan',
+					// age:12,
+					// id :4
+					// });
+					req.onsuccess = function(){
+						console.log("添加成功");
+					}
+
+					req.onerror = function(){
+						console.log("添加失败");
+					}
+				}
+				
+				
+			}
+			// 查询
+			btns[3].onclick = function(){
+				// 数据库
+				var request = indexedDB.open('user');
+				request.onsuccess = function(){
+					var db = this.result;
+					// 获取事务
+					// var ts = db.transaction(['Student'],'readwrite');
+					var ts = db.transaction('Student','readwrite');
+					// 获取对象仓库
+					var store = ts.objectStore('Student');
+					console.log(store);
+					var req = store.getAll();
+					req.onsuccess = function(){
+						console.log("查询成功",this.result);
+					}
+
+					req.onerror = function(){
+						console.log("查询失败",);
+					}
+				}
+			}
+			// 删除
+			btns[4].onclick = function(){
+				// store 对象仓库
+				var request = indexedDB.open('user');
+				request.onsuccess = function(){
+					// 获取数据库对象
+					var db = this.result;
+					var ts = db.transaction('Student','readwrite');
+					// 获取对象仓库
+					var store = ts.objectStore('Student');
+					// 删除单个数据
+					var req = store.delete(1);
+					// 清空对象产库
+					// var req = store.clear();
+					var re
+					req.onsuccess = function(){
+						console.log('删除成功');
+					}
+					req.onerror = function(){
+						console.log('删除失败');
+					}
+				}
+			}
+			// 删除对象仓库
+			btns[5].onclick = function(){
+				var request = indexedDB.open('user');
+
+				request.onsuccess = function(){
+					var db = this.result;
+					alert(1);
+					var req = db.deleteObjectStore(this);
+					req.onsuccess = function(){
+	                    	console.log("对象仓库删除成功",this.result);
+	                    }
+	                req.onerror = function(){
+	                    	console.log("对象仓库删除失败");
+	                    }
+					 // if(db.objectStoreNames.contains("Student")){
+	     //                var req = db.deleteObjectStore("Student");
+	     //                req.onsuccess = function(){
+	     //                	console.log("对象仓库删除成功",this.result);
+	     //                }
+	     //                req.onerror = function(){
+	     //                	console.log("对象仓库删除失败");
+	     //                }
+	     //            }
+				}
+			}
+
+			// 获取单个
+			btns[6].onclick = function(){
+				// 数据库
+				var request = indexedDB.open('user');
+				request.onsuccess = function(){
+					var db = this.result;
+					// 获取事务
+					// var ts = db.transaction(['Student'],'readwrite');
+					var ts = db.transaction('Student','readwrite');
+					// 获取对象仓库
+					var store = ts.objectStore('Student');
+					console.log(store);
+					var req = store.get(2);
+					req.onsuccess = function(){
+						console.log("查询单个成功",this.result);
+					}
+
+					req.onerror = function(){
+						console.log("查询失败",);
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2>先点击获取数据仓库,在点击增删改查</h2>
+	<button>创建对象产库</button>
+	<button>获取对象仓库</button>
+	<button>添加 修改数据</button>
+	<button>查询数据</button>
+	<button>删除数据</button>
+	<button>删除对象仓库</button>
+	<button>根据key值获取单个</button>
+</body>
+</html>

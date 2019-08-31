@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注释类型</title>
+	<script>
+		window.onload = function(){
+			var comment = document.body.childNodes[1];
+			console.log(comment); / /8
+			console.log(comment.nodeType);
+			console.log(comment.nodeValue);
+			comment.nodeValue = '你啊';
+			console.log(comment.nodeValue)
+
+
+		}
+	</script>
+</head>
+<body>
+	<!-- 这是注释 -->
+</body>
+</html>

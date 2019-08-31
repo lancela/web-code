@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象树的形式展示</title>
+	<link rel="stylesheet" href="http://www.treejs.cn/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  	<script type="text/javascript" src="http://www.treejs.cn/v3/js/jquery-1.4.4.min.js"></script> 
+  	<script type="text/javascript" src="http://www.treejs.cn/v3/js/jquery.ztree.core.js"></script> 
+	<script>
+		window.onload = function(){
+			var setting = { data: { simpleData: { enable: true } } }; 
+			var item = [
+			{id:1,name:'根编目',cate_path:null},
+			{id:2,name:'Java课程',cate_path:'1.2'},
+			{id:3,name:'Spring课程',cate_path:'1.2.3'},
+			{id:6,name:'Servlet课程',cate_path:'1.2.6'},
+			{id:4,name:'SpringBoot课程',cate_path:'1.2.3.4'},
+			{id:5,name:'Web课程',cate_path:'1.5'},
+			{id:7,name:'React课程',cate_path:'1.5.7'},
+			{id:8,name:'redux课程',cate_path:'1.5.7.8'}
+			];
+			item.forEach( function(item, index) {
+				// console.log(item,index);
+				// item.cate_path.slice(-3, -4);
+				if(!(item.cate_path==null)){
+					// console.log(item.cate_path.split("."));
+					// console.log(item.cate_path.split(".").slice(-2,-1));
+					item.pId = item.cate_path.split(".").slice(-2,-1).toString();
+				}else{
+					item.pId = 0;
+				}
+				
+			});
+			console.log(item);
+			$(document).ready(function(){$.fn.zTree.init($("#treeDemo"), setting, item);});
+		}
+
+	</script>
+</head>
+<body>
+	<h1>最简单的树 -- 简单 JSON 数据</h1>
+	 <div class="zTreeDemoBackground"> 
+	 	<ul id="treeDemo" class="ztree">
+	 		
+	 	</ul>
+	 </div>
+</body>
+</html>

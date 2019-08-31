@@ -1,0 +1,21 @@
+1.函数
+2.选择器字符串
+	$('one')
+	$('#one .twwo')
+	$('#one>.two')
+	$('#one>*')eq(2) 等于
+	返回jquery 对象,类数组对象,放DOM对象
+3.DOM节点
+	div -->DOM节点
+		$(div); 返回jquery对象
+		把DOM节点转换成jQuery对象
+4.HTML字符串
+	$('<div>hello</div>')
+		创建对应的节点,返回jQuery对象
+	$('<div>hello</div>').[0]==>DOM节点
+将DOM节点转化成jQuery对
+	$(dom节点)
+将jQuery对象转化成DOM节点
+	$('div').[0]
+
+	

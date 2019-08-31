@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单选择器</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//用jquery实现用户选中的复选框,取出value值组成数组
+			// TODO
+			var arr=[];
+			$('form :checkbox').click(function(){
+				// alert(1);
+				var $result = $('form :checkbox:checked');
+				//console.log($result);
+				//1.获取内部的DOM,把其value属性放到arr
+				//2.将$result转化成数组,然后映射value出来
+				//3.用jQuery对象的映射方法
+				//返回的依然是jquery对象
+				$arr = $result.map(function(index,item){
+					//item 依然是DOM
+					//console.log(index,item);
+					return item.value;
+					// console.log($(item));
+					// console.log($(item).val());
+					//return $(item).val();
+				});
+				arr = Array.prototype.slice.call($arr,0);
+				console.log(arr);
+			});
+			// console.log($('div :disabled'));
+			// console.log($('div :enabled'));
+			// console.log($('div :checked'));
+			// console.log($('div :focus'));
+			console.log($('div :input'));
+			console.log($('div input'));
+			console.log($('div :text'));
+			console.log($('div :password'));
+			console.log($('div :radio'));
+			console.log($('div :checkbox'));
+			console.log($('div :submit'));
+			console.log($('div :reset'));
+			console.log($('div :button'));
+
+			
+		});
+	</script>
+</head>
+<body>
+	<form action="#">
+		<div>
+			<input type="text">
+			<br>
+			<input type="password">
+			<input type="checkbox" checked="" value="1">
+			<input type="checkbox" value="2">
+			<input type="checkbox" value="3">
+			<button>按钮一</button>
+			<input autofocus='true' type="text">文本
+			<select name="num" id="">
+				<optgroup label="down">
+					<option value="5">5</option>
+					<option value="4" checked="true">4</option>
+					<option value="3">3</option>
+					<option value="2">2</option>
+				</optgroup>
+				<optgroup label="up" >
+					<option value="五">五</option>
+					<option value="四">四</option>
+					<option value="三">三</option>
+					<option value="二">二</option>
+				</optgroup>
+			</select>
+			<textarea name="" id="" cols="30" rows="10"></textarea>
+			<input type="submit">
+			<input type="reset">
+		</div>
+	</form>
+</body>
+</html>

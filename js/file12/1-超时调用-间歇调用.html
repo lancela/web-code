@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//2s输出hello
+		//窗口调用window
+		//主程序执行完才执行
+		var id = setTimeout(function(){
+			console.log('hello');
+		},10000);
+		console.log('------');
+		setTimeout(function(){
+			//清除超时调用
+			console.log('5000s了');
+			clearTimeout(id);
+		},5000);
+
+		//间歇调用
+		//每隔一秒输出1
+		var sid = setInterval(function(){
+			console.log(1);
+		},1000);
+
+		//在十秒后,停止1的输出
+		setTimeout(function(){
+			clearInterval(sid);
+		},10000);
+		// var a=2;
+		// console.log(window.a);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

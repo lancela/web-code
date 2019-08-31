@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>5-属性操作.html</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//获取属性值
+			//attr()正常属性和自定义属性
+			console.log($('div').attr('title'));
+			console.log($('div').attr('data-id'));
+			console.log($('input').attr('checked')); //check
+			//prop() boolean 属性
+			console.log($('div').prop('title'));
+			console.log($('div').prop('data-id'));//undefined
+			console.log($('input').prop('checked'));//true
+			//设置属性值
+			$('div').attr({
+    			'title':'after',
+   				'data-id': 1222,
+			});
+			// $('div').attr('title','设置之后');
+			// $('div').attr('data-id','设置之后');
+			// $('input').attr('checked',false);
+
+			// $('div').prop('title','设置之后');
+			// $('div').prop('data-id','设置之后'); //自定义属性无效
+			// $('input').prop('checked',false);
+			//删除属性
+			// $('div').removeAttr('title');
+			// $('div').removeAttr('data-id');
+			// $('input').removeAttr('checked');
+			//==>引发未知问题
+			// $('div').removeProp('title');
+			// $('div').removeProp('data-id');
+			// $('input').removeProp('checked');
+			$('input').attr('valu','123');
+			$('input').removeProp('valu');
+
+
+
+			
+
+
+		});
+	</script>
+</head>
+<body>
+	<div title="helle" data-id="1001">hello</div>
+	<div title="world" data-id="1001">hello</div>
+	<input type="checkbox" checked>默认选中
+</body>
+</html>

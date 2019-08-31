@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过度</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+		div:hover{
+			width: 500px;
+			background-color: gold;
+			transition: width 2s linear ,background 2s linear 2s;
+			/*如果控制多个属性一同过度 用all*/
+			/*transition: all 2s linear 1s;*/
+
+		}
+	</style>
+</head>
+<body>
+	<div>
+		
+	</div>
+</body>
+</html>

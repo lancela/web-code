@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据处理</title>
+	<script>
+		window.onload = function(){
+			
+			var item = [
+			{id:1,name:'根编目',cate_path:'0'},
+			
+			{id:6,name:'Servlet课程',cate_path:'1.2.6'},
+			{id:4,name:'SpringBoot课程',cate_path:'1.2.3.4'},
+			{id:5,name:'Web课程',cate_path:'1.5'},
+			{id:7,name:'React课程',cate_path:'1.5.7'},
+			{id:2,name:'Java课程',cate_path:'1.2'},
+			{id:3,name:'Spring课程',cate_path:'1.2.3'},
+			{id:8,name:'redux课程',cate_path:'1.5.7.8'}
+			];
+
+			// item = item.filter(function(item){
+			// 	return item.cate_path;
+			// });
+			console.log(item);
+			function com(obj1,obj2){
+				
+				if(obj1.cate_path.length>=obj2.cate_path.length){
+					return 1;
+				}
+				return -1
+			}
+			
+			console.log(item.sort(com),"排序之后的");
+			item = item.sort(com);
+			item.forEach( function(item, index) {
+				item.children=[];
+				// console.log(item,index);
+				// item.cate_path.slice(-3, -4);
+				if(!(item.cate_path==null)){
+					// console.log(item.cate_path.split("."));
+					// console.log(item.cate_path.split(".").slice(-2,-1));
+					item.pId = item.cate_path.split(".").slice(-2,-1).toString();
+				}else{
+					item.pId = 0;
+				}
+				
+			});
+			console.log(item);
+			// 将子编目放到父编目的对象的child数组中
+			item.forEach(function(cItem){
+				var parents = item.filter(function(pItem){
+					return cItem.pId ==pItem.id;
+				});
+				if(parents.length>0){
+					parents[0].children.push(item);
+				}
+			});
+			// function deal(items){
+			// 	var i = items.length-1;
+			// 	for(i; i>0;i--){
+			// 		// console.log(items[i],"---");
+			// 		var j = items.length-2;
+			// 		for(j;j>=0;j--){
+			// 			if(items[i].pId==items[j].id){
+							
+			// 				items[j].children.push(items[i]);
+							
+			// 			}
+			// 		}
+			// 	}
+			// 	console.log(items);
+			// }
+			// deal(item);
+			var item = item.filter(function(item){
+				return item.cate_path.split('.').length ===2;
+			});
+			console.log(item);
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

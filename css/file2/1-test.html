@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试~=和*=</title>
+	<style>
+		.one{
+			color: red;
+		}
+		.two{
+			color: blue;
+		}
+		div{
+			color: cyan;
+		}
+		[class~=one]{
+			background-color: pink;
+		}
+		[class*=one]{
+			background-color: pink;
+		}
+		/*特性值 权重*/
+		/*
+			style   1000
+			id: 	100
+			class ,伪类选择器, 属性选择器	10
+			标签	 伪元素	1
+			空格 + > ~0
+					*/
+			/*css级联 (使用!important修饰的最优先 不建议使用)
+			先判断特性值,特性值一样,就近原则
+			*/
+			/*权值累加*/
+			/*11*/
+			div.one{
+
+			}
+			/*2*/
+			bady>div{
+
+			}
+		[class~=one]{
+			color: pink;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="two one">one</div>和下面一样的 -->
+	<div class="one two">one</div>
+	<div class="onetwo">onetwo</div>
+</body>
+</html>

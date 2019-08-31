@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册页面</title>
+</head>
+<body>
+	<form action="#" method="GET">
+		<!-- form表单中的按钮可做提交用 -->
+		<!-- 自动聚焦属性 只能有一个  -->
+	用户名:	<input type="text" autofocus="true" name="username" />
+	<br /> 
+	密 &nbsp;&nbsp;码 : <input type="password" name="password" />	
+	<br />
+	<!-- 同一组 name值一样 会有互斥现象 value 提交给后台的值 -->
+	<!-- 表单提交的数据 实际上提交的是表单控件的value值 -->
+
+	性&nbsp;&nbsp; 别:
+	<input id="male" type="radio" checked="" name="gender" value="男" />  
+	<!-- 点击lable的时候 点击某个表单控件 -->
+	<label for="male">男</label>
+    <input type="radio" name="gender" value="女" id="female" /> 	
+    <label for="female">女</label> 
+	
+	<br />
+
+	爱&nbsp;&nbsp;好:
+	<!-- checked 单选和多选的默认被选中 -->
+	<input id="bool" type="checkbox" name="hobby" checked value="basketball"><label for="bool">篮球</label>
+	<input type="checkbox" name="hobby" value="sing">唱歌
+	<input type="checkbox" name="hobby" value="dancing">跳舞
+	<br />
+	籍&nbsp;&nbsp;贯:
+	<!--  multiple 多选-->
+	<!-- size 显示行数-->
+	<select name="address" id="">
+		<option value="">请选择</option>
+		<option value="shanghai">上海</option>
+		<option value="beijin">北京</option>
+		<!-- 默认被选中(专用) selected属性 布尔值 -->
+		<option value="jiangxi" selected="ture">江西</option>
+		<option value="hunan">湖南</option>
+		<option value="jiangsu">江苏</option>
+		<!-- 禁用属性 disabled-->
+		<option value="nancong" disabled="ture">南昌</option>
+
+	</select>
+	<br />
+	<label for="1">个人介绍</label>
+	<textarea id="1" name="info" id="" cols="30" rows="10">
+		
+	</textarea>
+	<br />
+	头像:
+	<input type="file" name="file">
+
+
+	<br />
+	<input type="submit">
+	<input type="reset">
+	<input type="image" src="../day02/images/2.jpg" width="50px" height="50px">
+	<button>可提交1</button>
+	<button type="submit">可提交</button>
+	<button type="reset"> 重置</button>
+	<button type="button"> 普通按钮</button>
+
+
+	</form>
+	<br />
+
+	<!-- 文件上传用post -->
+	<form action="" enctype="multipart/form-data" method="post">
+		头像:
+		<input type="file" name="file">
+		<input type="submit">
+		<input type="reset">
+	
+	</form>
+  		<br />
+	<form action="">
+		<!-- disabled 修饰的表单不会提交 -->
+		<!-- readonly 只读 ,不可以修改 -->
+		<input type="text" disabled="" name="id" value="1001">
+		<input type="text" readonly="" name="id" value="1002">
+		<!-- 将id显示在type="hidden"上 -->
+		<input type="hidden" name="hidden" value="123" >
+		<button>提交</button>
+	</form>
+	
+</body>
+</html>

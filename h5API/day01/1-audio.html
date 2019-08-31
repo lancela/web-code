@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>媒体</title>
+	<script>
+		window.onload = function(){
+			var video =  document.getElementsByTagName('video')[0];
+			console.log(video.currentSrc);
+			video.addEventListener('playing',function(){
+				console.log("开始播放");
+			});
+			video.addEventListener('pause',function(){
+				console.log("播放暂停");
+			},false);
+			video.addEventListener('ended',function(){
+				console.log("播放结束");
+			});
+			
+			video.addEventListener('durationchang',function(){
+				console.log("播放时长改变了");
+			});
+			// video.onPause = function(){
+			// 	console.log('播放暂停');
+			// }
+			video.addEventListener('volumechange',function(){
+				console.log('音量改变');
+			})
+		}
+	</script>
+</head>
+<body>
+	<!--  autoplay 自动播放-->
+	<!-- cotrols  控制条-->
+	<!-- muted 静音 -->
+	<audio src="">
+		<!-- <source src="" /> -->
+	</audio>
+	<video src="./media/QQ视频20190731164903.mp4" controls autoplay muted width="900px" height="800px" style="margin:0px auto" poster="../../5-jQuery/day02/image/pt1.jpeg">
+		
+	</video>
+		
+</body>
+</html>

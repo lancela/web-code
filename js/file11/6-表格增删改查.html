@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>6-表格增删改查.html</title>
+	<style>
+		table{
+			border-collapse:collapse;
+		}
+		table tr td,table tr th{
+			height: 30px;
+			width: 150px;
+			border:1px solid cyan;
+			text-align: center;
+		}
+	</style>
+	<script>
+		var strs = [
+		{
+			id:1001,
+			name:'zahngsan',
+			age:'13',
+			gender:'nan'
+		},{
+			id:1001,
+			name:'zahngsan',
+			age:'13',
+			gender:'nan'
+		},
+		{
+			id:1001,
+			name:'zahngsan',
+			age:'13',
+			gender:'nan'
+		}
+		];
+		window.onload=function(){
+			var tbody = document.getElementsByTagName('tbody')[0];
+			var bathDeleteBtn = document.getElementById('delmore');
+			var addbtn = document.getElementById('add') ;//TODO
+				console.log(addbtn);
+			var str = '';
+			strs.forEach(function(item){
+				str +=`
+				<tr>
+				<td> <input type="checkBox"> </td>
+				<td>`+item.name+`</td>
+				<td>`+item.age+`</td>
+				<td>`+item.gender+`</td>
+				<td> <button>删除</button> </td>
+			</tr>
+				`;
+			});
+			tbody.innerHTML=str;
+			tbody.onclick = function(event){
+				var target = event.target;
+				if(target.nodeName==='BUTTON'){
+					this.removeChild(target.parentNode.parentNode);
+				}
+			}
+
+			//
+
+			bathDeleteBtn.onclick = function(){
+				var inputs = document.getElementsByTagName('input');
+				inputs = Array.prototype.slice.call(inputs,0);
+				var addbtn = document.getElementById('add') ;//TODO
+				
+				var inputsResult = inputs.filter(function(item){
+					return item.checked ===true;
+				});
+				console.log(inputsResult);
+				if(inputsResult.length>0){
+					inputsResult.forEach(function(item){	
+						tbody.removeChild(item.parentNode.parentNode);
+					});
+				}else{
+					alert('no');
+				}
+			};
+			//新增
+			// TODO
+			addbtn.onclick=function(){
+				var newTr = document.createElement('tr');
+				str = `
+				<td> <input type="checkbox"></td>
+					<td>tom</td>
+					<td>12</td>
+					<td>nan</td>
+					<td> <button>删除</button> </td>
+				`;
+				newTr.innerHTML=str;
+				tbody.appendChild(newTr);
+			}
+		};
+			
+	</script>
+</head>
+<body>
+	<!-- 查看数据,单条删除,批量删除 ,新增 -->
+	<button id="add">新增</button>
+	<button id="delmore">批量删除</button>
+	<table>
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <tr>
+				<td> <input type="checkbox"> </td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td> <button>删除</button> </td>
+			</tr> -->
+		</tbody>
+	</table>
+	
+</body>
+</html>

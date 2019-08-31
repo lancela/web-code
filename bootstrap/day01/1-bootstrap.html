@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>环境搭建</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css">
+	<style>
+		.gray{
+			border:1px solid red;
+			height:30px;
+		}
+	</style>
+</head>
+<body>
+	<!-- container容器 -->
+	<div class="container">
+		<!-- 栅格布局12格 -->
+		<div class="row">
+			<div class="bg-danger col-md-4">hello</div>
+			<div class="bg-warning col-md-4">hello</div>
+			<div class="bg-success col-md-4">hello</div>
+		</div>
+		<div class="row">
+			<div class="bg-danger col-sm-1">hello</div>
+			<div class="bg-warning col-sm-1">hello</div>
+			<div class="bg-success col-sm-1">hello</div>
+			<div class="bg-danger col-sm-1">hello</div>
+			<div class="bg-warning col-sm-1">hello</div>
+			<div class="bg-success col-sm-1">hello</div>
+			<div class="bg-danger col-sm-1">hello</div>
+			<div class="bg-warning col-sm-1">hello</div>
+			<div class="bg-success col-sm-1">hello</div>
+			<div class="bg-danger col-sm-1">hello</div>
+			<div class="bg-warning col-sm-1">hello</div>
+			<div class="bg-success col-sm-1">hello</div>
+		</div>
+		<div class="row">
+			<div class="bg-danger col-sm-6 col-md-3" >world</div>
+			<div class="bg-success col-sm-6 col-md-3">world</div>
+
+		</div>
+		<!-- 响应式显示 -->
+		<div class="visible-sm">hello 显示与否</div>
+		<!-- 栅格系统偏移  6 1 5-->
+		<div class="row">
+			<div class="col-sm-6 bg-danger">hello</div>
+			<div class="col-sm-5 bg-success col-sm-offset-1">world</div>
+
+		</div>
+		<!-- 改变位置 -->
+		<div class="row">
+			<div class="col-sm-5 bg-danger col-sm-offset-3">hellorrr</div>
+			<div class="col-sm-5 bg-danger col-sm-push-3 ">hello33</div>
+			<div class="col-sm-2 bg-success col-sm-pull-5">hello</div>
+
+		</div>
+		<!-- On rows -->
+		<table class="table">
+			<tr class="active">
+				<td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			</tr>
+			<tr class="success">
+				<td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			</tr>
+			<tr class="warning">
+				<td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			</tr>
+			<tr class="danger">
+				<td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td c>heiehe</td>
+			</tr>
+			<tr class="info">
+				<td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			  <td >heiehe</td>
+			</tr>
+
+			<!-- On cells (`td` or `th`) -->
+			<tr>
+			  <td class="active">heiehe</td>
+			  <td class="success">heiehe</td>
+			  <td class="warning">heiehe</td>
+			  <td class="danger">heiehe</td>
+			  <td class="info">heiehe</td>
+			</tr>
+		</table>
+		
+	</div>
+</body>
+</html>

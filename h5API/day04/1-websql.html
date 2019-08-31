@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1-websql</title>
+	<script>
+		<!-- 谷歌底下测试 -->
+		window.onload = function(){
+			// update();
+			var btns =document.getElementsByTagName('button');
+			// 创建数据库
+			btns[0].onclick = function(){
+				alert(1);
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				console.log(db);
+				
+			}
+			// 创建表
+			btns[1].onclick = function(){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				// 获取事务对象 执行sql语句
+				db.transaction(function(ts){
+					// ts 事务对象
+					// ts.executeSql() 执行sql语句
+					var sql = "create table student(id integer,name text,age integer,tel text)";
+					ts.executeSql(sql,[],function(ts,result){
+						console.log("创建表成功",result);
+					},function(ts,error){
+
+					});
+				});
+			} 
+			// 添加数据
+			btns[2].onclick =  function(){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					var sql = "insert into student values(1001,'zhangsan',12,'12323233434')";
+					ts.executeSql(sql,[],function(ts,result){
+						console.log("添加数据成功")
+					},function(ts,error){
+						console.log("失败",error)
+					});
+				});
+			}
+			// 修改数据
+			btns[3].onclick = function(){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					// 修改 rowid为1的name为王五
+					// var sql = 'updata student set name = ?';
+					var sql = 'update student set name =? where rowid =?';
+					ts.executeSql(sql,["lance",1],function(ts,result){
+						console.log("修改成功",result)
+					},function(ts,error){
+						console.log("修改出错",error);
+					})
+				})
+			}
+			
+			// (全封装)封装websql
+			function MyExe(sql,arr,fun1,fun2){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					// ts-->事务对象
+					ts.executeSql(sql,arr,function(res){
+						fun1(res);
+					},function(){
+						fun2(res);
+					})
+				});
+				// location.reload();
+			}
+			// (半封装)封装websql
+			function getTs(handle){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					// ts-->事务对象
+					handle(ts);
+				});
+			}
+			// 查询数据
+			btns[4].onclick = update;
+			function update(){
+				// 使用封装的代码实现查询的功能
+				getTs(function(ts){
+					var sql = 'select * from student';
+					ts.executeSql(sql,[],function(ts,result){
+						console.log("查询成功",result);
+					},function(ts,error){
+						console.log("查询失败")
+					});
+				});
+			}
+			// 删除数据
+			btns[5].onclick = function(){
+				var sql= 'delete from student';
+				MyExe(sql,[],function(res){
+					console.log("删除成功",res);
+				},function(){
+					console.log("删除失败",rse);
+				});
+			}
+			// 删除表
+			btns[6].onclick = function(){
+				var sql= 'drop table student';
+				MyExe(sql,[],function(res){
+					console.log("删除表成功",res);
+				},function(){
+					console.log("删除表失败",rse);
+				});
+			}
+		}
+	</script>
+</head>
+<body>
+	<button>创建数据库</button>
+	<button>创建表</button>
+	<button>添加数据</button>
+	<button>修改数据</button>
+	<button>查询数据</button>
+	<button>删除数据</button>
+	<button>删除表</button>
+</body>
+</html>

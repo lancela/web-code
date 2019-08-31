@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉列表</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
+	<script>
+		$(function(){
+			$('.dropdown li').click(function(){
+				// console.log($(this).text());
+				$('.dropdown button').html($(this).text()+'  <span class="caret"></span>');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="well">
+
+
+
+			<div class="dropdown ">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >
+			    Dropdown
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+
+			<!-- 按钮组 -->
+			<div class="btn-group btn-group-justified">
+				<a href="" class="btn btn-default">按钮</a>
+				<a href="" class="btn btn-default">按钮</a>
+				<a href="" class="btn btn-default">按钮</a>
+				
+			</div>
+			<!--###### -->
+			<div class="btn-group btn-group-justified">
+				<div class="btn-group">
+					<button class="btn btn-default">按钮</button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-default">按钮</button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-default">按钮</button>
+				</div>
+				
+			</div>
+			<!-- 分页 -->
+			<ul class="pagination">
+			    <li class="disabled">
+			      <a href="#" >
+			        <span >&laquo;</span>
+			      </a>
+			    </li>
+			    <li class="active"><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			    <li>
+			      <a href="#" >
+			        <span >&raquo;</span>
+			      </a>
+			    </li>
+			 </ul>
+			 <!-- 徽章 -->
+			 <buttotn class="btn btn-warning">
+			 	未读消息
+			 	<span class="badge">10</span>
+			 </buttotn>
+			 <br>
+			 <br><br>
+			 <!-- 进度条 -->
+			 <div class="progress">
+			 	<div class="progress-bar progress-bar-striped progress-bar-danger active" style="width: 45%">
+			 		45%
+			 	</div>
+			 	
+			 </div>
+			 <!-- 面板 -->
+			 <div class="panel panel-danger">
+			 	<div class="panel-heading">head</div>
+			 	<div class="panel-body">body</div>
+			 	<div>
+			 	<table class="table">
+			 		<tr>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 		</tr>
+			 		<tr>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 		</tr>
+			 		<tr>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 				<td>helo</td>
+			 		</tr>
+			 	</table>
+			 	</div>
+			 	<div class="panel-footer">footer</div>
+			 </div>
+			<!-- 面包屑导航 -->
+			<ol class="breadcrumb">
+				<li><a href="">首页</a></li>
+				<li class="disabled"><a href="">新闻栏</a></li>
+				<!-- <li class="active"><a href="">栏目页</a></li> -->
+				<li class="active">栏目页</li>
+
+			</ol>
+			<!-- 导航条 -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+			  <div class="container">
+			  	<ul class="nav nav-pills nav-justified">
+					<!-- <li class="disabled"><a href="">新闻栏</a></li>
+					<li class="disabled"><a href="">新闻栏</a></li>
+					<li class="disabled"><a href="">新闻栏</a></li> -->
+					
+				 	<li class="active">栏目页</li>
+			    	<li class="active">栏目页</li>
+			    	<li class="active">栏目页</li>
+				</ul>
+			    <!-- <ol class="list-unstyled list-inline">
+			    	<li class="active">栏目页</li>
+			    	<li class="active">栏目页</li>
+			    	<li class="active">栏目页</li>
+
+			    </ol> -->
+			  </div>
+			</nav>
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<!-- bootstrap 中的导航组件都依赖同一个 .nav 类 -->
+		<!-- 标签页 -->
+		<ul class="nav nav-tabs">
+		  <li role="presentation" class="active"><a href="#">Home</a></li>
+		  <li role="presentation"><a href="#">Profile</a></li>
+		  <li role="presentation"><a href="#">Messages</a></li>
+		</ul
+		<!-- 胶囊式标签页 nav-pills -->
+		<!-- 垂直方向堆叠排列的  .nav-stacked -->
+		<!-- nav-justified 两端对齐 -->
+		<!-- disabled 实现链接为灰色且没有鼠标悬停效果 -->
+		<ul class="nav nav-pills " >
+		  <li role="presentation" class="active"><a href="#">Home</a></li>
+		  <li role="presentation"><a href="#">Profile</a></li>
+		  <li role="presentation" class="disabled"><a href="#">Messages</a></li>
+		  <!-- 包含下拉菜单 -->
+		  <li role="presentation" class="dropdown">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		      Dropdown <span class="caret"></span>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li>12</li>
+		    </ul>
+		  </li>
+		</ul>
+		<!-- 导航条 -->
+		<nav class="navbar navbar-default navbar-inverse">
+		    <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="#">Brand</a>
+			    </div>
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+			        <li><a href="#">Link</a></li>
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Action</a></li>
+			            <li><a href="#">Another action</a></li>
+			            <li><a href="#">Something else here</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#">Separated link</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#">One more separated link</a></li>
+			          </ul>
+			        </li>
+			      </ul>
+			      <form class="navbar-form navbar-left">
+			        <div class="form-group">
+			          <input type="text" class="form-control" placeholder="Search">
+			        </div>
+			        <button type="submit" class="btn btn-default">Submit</button>
+			      </form>
+			      <ul class="nav navbar-nav navbar-right">
+			        <li><a href="#">Link</a></li>
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Action</a></li>
+			            <li><a href="#">Another action</a></li>
+			            <li><a href="#">Something else here</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#">Separated link</a></li>
+			          </ul>
+			        </li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+		  </div>
+		</nav>
+			<br>
+		<!-- 品牌图标将导航条内放置品牌标志的地方替换为 <img> 元素即可展示自己的品牌图标 -->
+
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">
+		        <img alt="Brand" src="">
+		      </a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    	<form class="navbar-form navbar-left" role="search">
+				  <div class="form-group">
+				    <input type="text" class="form-control" placeholder="Search">
+				  </div>
+				  <button type="submit" class="btn btn-default">Submit</button>
+				</form>
+		    </div>
+		    <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+		    <p class="navbar-text">Signed in as Mark Otto</p>
+		    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+		  </div>
+		</nav		
+		<!-- 路径导航 -->
+		<ol class="breadcrumb">
+		  <li><a href="#">Home</a></li>
+		  <li><a href="#">Library</a></li>
+		  <li class="active">Data</li>
+		</ol>
+		<!-- 分页 -->
+		<!-- .pagination-lg 或 .pagination-sm 修改尺寸 -->
+		<nav aria-label="Page navigation">
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li class="disabled"><a href="#">1</a></li>
+		    <li class="active"><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+		<!-- 上下翻页 -->
+		<nav aria-label="...">
+		  <ul class="pager">
+		    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+		    <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+		  </ul>
+		</nav>
+
+
+
+
+
+
+
+	</div>
+</body>
+</html>

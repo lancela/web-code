@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>7-webWorker</title>
+	<script>
+		console.log(1);
+		console.time();
+		var worker = new Worker("web.js");
+		// 监听后台程序 给worker 数据
+		worker.onmessage = function(event){
+			// event.data后台程序给的数据
+			console.log(event.data);
+		}
+		worker.postMessage(1000000000);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

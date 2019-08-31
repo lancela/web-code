@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>line-height</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			/*内部文本水平居中*/
+			text-align: center;
+			/*内部文本垂直居中 设置文本的行高*/
+			/*行高 span40px*/
+			line-height: 100px;
+		}
+		ul{
+			display:inline-block;
+			list-style: none;
+			height: 50px;
+			width: 800px;
+			background-color: teal;
+			color: white;
+			/*margin: 0px auto;*/
+			text-align:center;
+		}
+		li{
+			display: inline-block;
+
+			width: 20%;
+			text-align: center;
+			line-height: 50px;
+		}
+
+	</style>
+</head>
+<body>
+	<div style="text-align: center;">
+		<ul>
+			<li>首页</li>
+			<li>列表页</li>
+			<li>新闻页</li>
+			<li>关于我们</li>
+		</ul>
+	</div>
+</body>
+</html>

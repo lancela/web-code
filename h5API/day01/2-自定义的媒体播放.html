@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2-自定义的媒体播放</title>
+	<script>
+		window.onload = function(){
+			// 视频节点
+			var video = document.getElementsByTagName('video')[0];
+			// 切换按钮
+			var toggle=document.getElementById('toggle');
+			toggle.onclick =function(){
+				
+				//video.paused true暂停 false 播放
+				if(video.paused){
+					video.play();
+					console.log(video.paused);
+					this.innerText = '暂停1';
+				}else{
+					video.pause();
+					console.log(video.paused);
+					this.innerText = '播放1';
+				}
+			}
+			//button事件
+			var btnDiv = document.getElementById('btn-div');
+			btnDiv.onclick=function(event){
+				var text = event.target.innerText;
+				if(text === '播放'){
+					video.play();
+				}else if(text === '暂停'){
+					video.pause();
+				}
+				if(text === '快进'){
+					console.log(video.currentTime);
+					video.currentTime+=10;
+				}
+				if(text === '快退'){
+					console.log(video.currentTime);
+					video.currentTime-=10;
+				}
+				if(text === '2倍数'){
+					video.playbackRate = 2;
+				}
+				if(text === '0.5倍数'){
+					video.playbackRate = 0.5;
+				}
+				if(text === '音量+'){
+					video.volume+=1;
+				}
+				if(text === '音量-'){
+					video.volume-=1;
+				}
+				if(text === '静音'){
+					
+				}
+
+
+			}
+			// document keydowm事件
+			document.onkeydown = function(){
+				console.log(1);
+				// 键盘码
+				console.log(event.keyCode);
+				//左 上 右 下  37 38 39 40
+				if(event.keyCode === 37){
+					video.currentTime-=10;
+					
+				}
+				if(event.keyCode === 38){
+					video.volume+=0.1;
+					
+				}
+				if(event.keyCode === 39){
+					video.currentTime+=10;
+				}
+				if(event.keyCode === 40){
+					video.volume-=0.1;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="btn-div">
+		<button>播放</button>
+		<button>暂停</button>
+		<button id="toggle">切换</button>
+		<button>快进</button>
+		<button>快退</button>
+		<button>2倍数</button>
+		<button>0.5倍数</button>
+		<button>音量+</button>
+		<button>音量-</button>
+		<button>静音</button>
+
+	</div>
+	<br>
+	<!-- <video src="./media/QQ视频20190731164903.mp4"></video> -->
+	<video src="G:/迅雷下载/功夫熊猫3[BD中英双字]_bd.mp4"></video>
+
+
+</body>
+</html>

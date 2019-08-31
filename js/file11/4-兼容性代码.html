@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>兼容性代码</title>
+	<script>
+		var eventUtil = {
+			//1.事件绑定
+			bind:function(el,type,handle){
+				console.log(el,'11');
+
+				if(el.addEventListener){
+					console.log(event);
+					//DOM2级事件处理
+					el.addEventListener(type,handle);
+				}else if(el.attachEvent){
+					//IE事件处理
+					el.attachEvent('on'+type,handle);
+				}else{
+					//DOM0事件处理
+					el['on'+type] = handle;
+					//el.onclick = handle;
+				}
+			},
+			//2.事件解绑
+			unbind:function(el,type,handle){
+				if(el.removeEventListener){
+					el.removeEventListener(type,handle);
+
+				}else if(el.detachEvent){
+					el.detachEvent('on'+type,handle);
+				}else{
+					el['on'+type] = null;
+				}
+			},
+			//3.事件对象
+			getEvent:function(event){
+				return event?event:window.event;
+			},
+			//4.事件目标
+			getTarget:function(event){
+				return event.target?event.target:event.srcElement;
+			},
+			//5.停止冒泡
+			stopProp:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();
+				}else{
+					event.cancelBubble = true;
+				}
+			},
+			//6.阻止默认
+			preventDef:function(event){
+				if(event.preventDefault){
+					event.preventDefault();
+				}else{
+					event.returnVale = true;
+				}
+			}
+
+		};
+		window.onload = function(){
+			var div = document.getElementsByTagName('div')[0];
+			eventUtil.bind(div,'click',function(event){
+				var e = eventUtil.getEvent(event);
+				console.log(e);
+				console.log(this,"---");
+				alert(1);
+			},{});
+			var href = document.getElementsByTagName('a')[0];
+			//console.log(href);
+			eventUtil.bind(href,'click',function(){
+				alert(1);
+			});
+			eventUtil.bind(href,'click',eventUtil.preventDef);
+			// eventUtil.bind(href,'click',function(){
+			// 	eventUtil.preventDef();
+			// });
+			
+
+		}
+
+	</script>
+</head>
+<body>
+	<div>12</div>
+	<a href="./1-事件绑定与解绑.html">跳转</a>
+</body>
+</html>

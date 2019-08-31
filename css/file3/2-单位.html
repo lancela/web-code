@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			font-size: 20px;
+			/*1em=20px*/
+		}
+		.parent{
+			/*em大小可调整*/
+			/*重视点*/
+			/*相对当前元素的font-size大小*/
+			/*1em=16px*/
+			/*1rem= 16px*/
+			width: 10rem;
+			height: 10rem;
+			/*width: 10cm;
+			height: 10cm;*/
+			background-color: coral;
+		}
+		.child{
+			/*width: 5em;
+			height: 5em;*/
+			/*使用的前提要了解父元素的大小*/
+			width: 50%;
+			height: 50%;
+			background-color: cyan;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="parent">
+		<div class="child">
+			
+		</div>
+	</div>
+</body>
+</html>

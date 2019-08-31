@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+
+	<title>h5中的表单</title>
+	<script>
+		window.onload=function(){
+		    var ele =document.getElementById('download');
+		    console.log(ele.value);
+		    // ele.value=50;
+		    setInterval(function(){
+		    	if(ele.value>=100){
+		    		return;
+		    	}else{
+		    		ele.value+=5;
+		    		console.log(ele.value);
+		    		show.innerHTML =ele.value+'%';
+		    	}
+		    },2000);
+	    }
+	</script>
+</head>
+<body>
+	
+	
+		<!-- <progress value="80" max="100"> -->
+		<progress id="download" value="20" max="100"
+		form="form" name="name1"></progress><output id="show" form="form" >20%</output>
+		<br>
+		<!-- 绿色 -->
+		<meter min="0" max="100" low="40" high="60" value="60"></meter>
+		<!-- 黄色 -->
+		<meter min="0" max="100" low="40" high="60" value="20"></meter>
+		<meter min="0" max="100" low="40" high="60" value="80"></meter>
+   		<!-- 在low和high之间,和没给一样 -->
+		<meter min="0" max="100" low="40" high="60" optimum="50" value="50"></meter>
+        <!-- 在low和high之外, 有三种颜色 -->
+		<meter min="0" max="100" low="40" high="60" optimum="20" value="20"></meter>
+ 
+ 		<br />
+		<label for="">输入</label>
+		m m 
+		<!-- autocomplete="off"关闭自动补全 -->
+		<input type="text" autocomplete="off" name="id">
+
+		<br>
+		年月日<input type="date" form="form" name="12">
+		时间<input type="time">
+		年月日时间<input type="datetime-local">
+		月份 <input type="month">
+		周 <input type="week">
+
+
+		<h3>其他的type值</h3>
+		年龄 : <input type="number" required="" >
+		<br>
+		颜色 : <input type="color" name="color">
+		<br>
+		邮箱 : <input type="email" required="" />
+		<br>
+		<!-- required="" 必填项 -->
+		url :  <input type="url" required=""  >
+		<br>
+		tel : <input type="tel" pattern="[0-9]{11}">
+		<br>
+		search:<input type="search" name="" required="">
+		<br>
+		<!-- 滑块 -->
+		rang :	<input type="range" max="100" min="0" step="10" value="50">		
+		
+		<form action="#" id="form" method="GET">
+			<button>提交</button>
+			<button formaction="XXXXXX" formtarget="_blank" formnovalidate="">1</button>
+		</form>
+		
+
+
+	</form>
+
+	<input type="text" form="form" name="this" list="gun">
+</body>
+</html>

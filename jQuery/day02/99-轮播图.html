@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		.nextpt{
+			height: 300px;
+			width:450px;
+			overflow: hidden;
+			margin:20px auto 0;
+		}
+		.nextpt img{
+			height: inherit;
+			width:inherit;
+		}
+		.cheses{
+			margin:50px auto 0;
+			width: 6%;
+		}
+		.cheses span{
+			border:1px solid #000;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			var $img = $('img');
+			console.log($img.attr('src'));
+			//错误的写法,img的css中没有这个样式
+			console.log($img.css('src'),"====");
+			$('.cheses').bind('click','span',function(){
+				var $btn = $(event.target);
+				
+				if($btn.attr('data-pt')==='pt1'){
+					$btn.css({
+						background:'#000',
+					});
+					//console.log($('.cheses').children().not($btn));
+					$('.cheses').children().not($btn).css({
+						background:'#fff',
+					});
+					$img.attr('src','image/pt1.jpeg');
+					//$img.css({'src':'image/pt1.jpeg'});
+					//$img.slideUp(1000);
+					console.log($img.attr('src'));
+				}else if($btn.attr('data-pt')==='pt2'){
+					$btn.css({
+						background:'#000',
+					});
+					$('.cheses').children().not($btn).css({
+						background:'#fff',
+					});
+					$img.attr('src','image/pt2.jpeg');
+					// $img.css({src:'image/pt2.jpeg'});
+					console.log($img.attr('src'));
+				}if($btn.attr('data-pt')==='pt3'){
+					$btn.css({
+						background:'#000',
+					});
+					$('.cheses').children().not($btn).css({
+						background:'#fff',
+					});
+					$img.attr('src','image/pt3.jpeg');
+					//$img.css('src','image/pt3.jpeg');
+					console.log($img.attr('src'));
+				}if($btn.attr('data-pt')==='pt4'){
+					$btn.css({
+						background:'#000',
+					});
+					$('.cheses').children().not($btn).css({
+						background:'#fff',
+					});
+					$img.attr('src','image/pt4.jpeg');
+					//$img.css('src','image/pt4.jpg');
+					console.log($img.attr('src'));
+				}
+			});
+			var id = setTimeout(function(){
+
+		},1000);
+		});
+
+	</script>
+</head>
+<body>
+	<div class="cheses">
+		<span data-pt="pt1"></span>
+		<span data-pt="pt2"></span>
+		<span data-pt="pt3"></span>
+		<span data-pt="pt4"></span>
+	</div>
+	<div class="nextpt">
+		<img src="./image/pt1.jpeg" alt="boy">
+	</div>
+</body>
+</html>

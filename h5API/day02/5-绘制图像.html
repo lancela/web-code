@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>5-绘制图像</title>
+	<style>
+		canvas{
+			border:1px solid pink;
+			}
+	</style>
+	<script>
+		window.onload =  function(){
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			// context.beginPath();
+			// context.arc(100,100,100,0,Math.PI*2);
+			// context.closePath();
+			// // 图像的裁切
+			// context.clip();
+			// 绘制图像
+			// 创建图像节点
+			var image = new Image();
+			console.log(image);
+			image.src="../../6_bs/day03/image/pt6.jpg";
+			// 监听图像装置完成
+			image.onload = function(){
+				// 绘制
+				// 参数：图像对象，绘制位置的起始x坐标，起始y坐标
+				// 图像对象，绘制位置的起始x坐标，起始y坐标，绘制图像的宽，高
+				context.drawImage(image,0,0,200,200);
+			}
+			// 放大镜
+			// image  鼠标滑过获取鼠标所在坐标点(event.clientX  screenX),获取左上角点,得到方形区域,放大
+			context.beginPath();
+			context.arc(300,100,100,0,Math.PI*2);
+			context.closePath();
+			// 图像的裁切
+			// context.clip();
+			// context.fill();
+			// 
+			// image.onload = function(){
+			// 	// 绘制
+			// 	// 参数：图像对象，绘制位置的起始x坐标，起始y坐标
+			// 	// 图像对象，绘制位置的起始x坐标，起始y坐标，绘制图像的宽，高
+			// 	context.drawImage(image,200,0,600,600);
+			// }
+			// 绘制文本
+			context.font ='30px sans-serif';
+			// 参数 文本 开始绘制的位置
+			context.strokeText('hello',300,300);
+			// context.fillText('hello',300,300);
+
+		};
+	</script>
+</head>
+<body>
+	<canvas width="400px" height="400px" id="canvas"></canvas>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>7-ajax</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+
+			//jquery 的ajax默认的是提交表单格式数据,get方式和post方式参数的处理不同,默认设置了'Content-Type',
+			// $.ajax({
+			// //配置对象
+			// 	url:''
+			// 	method:'',
+			// 	data:{1},
+			// 	headers:{},
+			// 	success:function(){},
+			// 	error:function(){},
+				
+			// });
+
+
+			$.ajax('http://api.wangshuwen.com/getRegion',{
+			//配置对象
+				method:'GET',
+				data:{id:1001},
+				//成功的回调函数
+				success:function(){
+					console.log(res);
+				},
+				//请求失败的回调函数
+				error:function(){
+					console.log(res);
+				},
+				
+			});
+
+			$.ajax({
+			//配置对象
+				url:'http://api.wangshuwen.com/getRegion',
+				method:'GET',
+				data:{id:1001},
+				//成功的回调函数
+				success:function(res){
+					console.log(res);
+				},
+				//请求失败的回调函数
+				error:function(res){
+					console.log(res);
+				},
+				
+			});
+			// 1.get 无参
+			$.ajax({
+				url:'http://api.wangshuwen.com/getRegion',
+				method:'GET',
+				success:function(res){console.log(res)},
+				error:function(res){console.log(res)},
+			});
+
+			//2.get 有参
+			$.ajax({
+				url:'http://api.wangshuwen.com/getRegion',
+				method:'GET',
+				data:{
+					name:'lance',
+					age:12,
+				},
+				success:function(res){console.log(res)},
+				error:function(error){console.log(error)},
+			});
+			//3.POST 无参
+			$.ajax({
+				url:'http://api.wangshuwen.com/getRegion',
+				method:'POST',
+				success:function(res){console.log(res)},
+				error:function(error){console.log(error)},
+			});
+			//4.POST 有参
+			$.ajax({
+				url:'http://api.wangshuwen.com/getRegion',
+				method:'POST',
+				data:{
+					name:'lance',
+					age:12,
+				},
+				success:function(res){console.log(res)},
+				error:function(error){console.log(error)},
+			});
+			//$.get
+			$.get('http://api.wangshuwen.com/getRegion',{},function(res){console.log(res)});
+			//$.post
+			$.post('http://api.wangshuwen.com/getRegion',{},function(res){console.log(res)});
+			// $.getJSON 希望从后台得到JSON编码的数据
+			$.getJSON('http://api.wangshuwen.com/getRegion',{name:'11'},function(res){console.log(res,'$.getJSON请求')});
+
+		});
+	</script>
+</head>
+<body>
+	<button>加载</button>
+</body>
+</html>

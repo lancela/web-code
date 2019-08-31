@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>websql实现数据ztree的展示</title>
+	<link rel="stylesheet" href="http://www.treejs.cn/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  	<script type="text/javascript" src="http://www.treejs.cn/v3/js/jquery-1.4.4.min.js"></script> 
+  	<script type="text/javascript" src="http://www.treejs.cn/v3/js/jquery.ztree.core.js"></script> 
+  	<script>
+  		window.onload = function(){
+  			var setting = { data: { simpleData: { enable: true } } }; 
+  			var item = [
+			{id:1,name:'根编目id1',cate_path:null},
+			{id:2,name:'Java课程id2',cate_path:'1.2'},
+			{id:3,name:'Spring课程id3',cate_path:'1.2.3'},
+			{id:6,name:'Servlet课程id6',cate_path:'1.2.6'},
+			{id:4,name:'SpringBoot课程id4',cate_path:'1.2.3.4'},
+			{id:5,name:'Web课程id5',cate_path:'1.5'},
+			{id:7,name:'React课程id7',cate_path:'1.5.7'},
+			{id:8,name:'redux课程id8',cate_path:'1.5.7.8'}
+			];
+			item = item.filter(function(item){
+				return item.cate_path;
+			});
+  			var btns =document.getElementsByTagName('button');
+  			btns[0].onclick = function(){
+				alert(1);
+				var db = openDatabase('briup','1.0','briup',2*1024*1024);
+				console.log(db,"数据库创建成功");
+				
+			}
+			// 创建表
+			btns[1].onclick = function(){
+				var db = openDatabase('briup','1.0','briup',2*1024*1024);
+				// 获取事务对象 执行sql语句
+				db.transaction(function(ts){
+					// ts 事务对象
+					// ts.executeSql() 执行sql语句
+					var sql = "create table course(id integer,name text,cate_path text)";
+					ts.executeSql(sql,[],function(ts,result){
+						console.log("创建表成功",result);
+					},function(ts,error){
+
+					});
+				});
+			} 
+			// 添加数据
+			btns[2].onclick =  function(){
+				var db = openDatabase('briup','1.0','briup',2*1024*1024);
+				db.transaction(function(ts){
+					var sql = 
+					`insert into course values(?,?,?)
+					`;
+					item.forEach(function(item,index){
+						var data = [];
+						for(key in item){
+							data.push(item[key]);
+						}
+						ts.executeSql(sql,data,function(ts,result){
+						console.log("添加数据成功")
+						},function(ts,error){
+							console.log("失败",error)
+						});
+					});
+					
+				});
+			}
+			// 删除所有的数据
+			btns[3].onclick = function(){
+				var db = openDatabase('briup','1.0','briup',2*1024*1024);
+				// 获取事务对象 执行sql语句
+				db.transaction(function(ts){
+					// ts 事务对象
+					// ts.executeSql() 执行sql语句
+					var sql = "delete from course";
+					ts.executeSql(sql,[],function(ts,result){
+						console.log("删除所有数据成功",result);
+					},function(ts,error){
+
+					});
+				});
+			} 
+			// 展示所有的数据
+			btns[4].onclick = function(){
+				var db = openDatabase('briup','1.0','briup',2*1024*1024);
+				// 获取事务对象 执行sql语句
+				console.log(1);
+				db.transaction(function(ts){
+					// ts 事务对象
+					// ts.executeSql() 执行sql语句
+					var sql = "select * from course";
+					ts.executeSql(sql,[],function(ts,result){
+						console.log("查询所有数据成功",result);
+						console.log(Array.from(result.rows),'-----');
+						
+						var item = Array.from(result.rows);
+						item.forEach( function(item, index) {
+							// console.log(item,index);
+							// item.cate_path.slice(-3, -4);
+							if(!(item.cate_path==null)){
+								// console.log(item.cate_path.split("."));
+								// console.log(item.cate_path.split(".").slice(-2,-1));
+								item.pId = item.cate_path.split(".").slice(-2,-1).toString();
+							}else{
+								item.pId = 0;
+							}
+							
+						});
+
+						console.log(item,"====");
+							$(document).ready(function(){$.fn.zTree.init($("#treeDemo"), setting, item);});
+					},function(ts,error){
+						console.log("查询所有数据失败");
+					});
+				});
+			} 			
+			// 添加新的数据
+			btns[5].onclick =  function(){
+				var db = openDatabase('briup','1.0','briup',2*1024*1024);
+				db.transaction(function(ts){
+					var sql = 
+					`insert into course values(?,?,?)
+					`;
+					
+					var input = document.getElementsByTagName("input")[0];
+					console.log(input.value);
+					var data =  input.value.split(' ');
+					ts.executeSql(sql,data,function(ts,result){
+					console.log("添加数据成功")
+					},function(ts,error){
+						console.log("失败",error)
+					
+					});
+					
+				});
+			}
+
+  		}
+  	</script>
+</head>
+<body>
+	<button>创建数据库</button>
+	<button>创建表</button>
+	<button>添加初始数据</button>
+	<button>删除所有的数据</button>
+	<button>展示数据</button>
+	<button>填加新数据</button>
+	<div id="display" style="width: 200px;height: 400px ; border:1px solid pink">
+		<div class="zTreeDemoBackground"> 
+	 	<ul id="treeDemo" class="ztree">
+	 	</ul>
+	 </div>
+
+	</div>
+	 <input style="display: block;width: 400px" type="text" placeholder="按此样式添加{id:8,name:'redux课程',cate_path:'1.5.7.8'}">
+</body>
+</html>

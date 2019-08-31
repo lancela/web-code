@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图标</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="glyphicon glyphicon-triangle-left"></div>
+		<button class="btn btn-success">
+			<span class="glyphicon glyphicon-send"></span>
+		</button>
+		<button class="btn btn-success">
+			<span class="glyphicon glyphicon-send"></span> nice
+		</button>
+
+		<div class="alert alert-danger">
+			<span class="glyphicon glyphicon-exclamation-sign"></span> Enter a valid email address
+		</div>
+		
+		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Dropdown
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  	<li class="dropdown-header">hello</li>
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li class="dropdown-header">world</li>
+		    <li class="disabled"><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+			
+		<div class="btn-group" role="group" aria-label="...">
+		  <button type="button" class="btn btn-default">Left</button>
+		  <button type="button" class="btn btn-default">Middle</button>
+		  <button type="button" class="btn btn-default">Right</button>
+		</div>
+
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+		  <div class="btn-group btn-group-xs" role="group" aria-label="...">
+		  	 <button type="button" class="btn btn-default">Left</button>
+			  <button type="button" class="btn btn-default">Middle</button>
+			  <button type="button" class="btn btn-default">Right</button>
+		  </div>
+		  <div class="btn-group" role="group" aria-label="...">
+		  	<button type="button" class="btn btn-default">Left</button>
+			  <button type="button" class="btn btn-default">Middle</button>
+			  <button type="button" class="btn btn-default">Right</button>
+		  </div>
+		  <div class="btn-group btn-group-lg" role="group" aria-label="...">
+		  	<button type="button" class="btn btn-default">Left</button>
+			  <button type="button" class="btn btn-default">Middle</button>
+			  <button type="button" class="btn btn-default">Right</button>
+		  </div>
+		</div>
+
+		<div class="btn-group" role="group" aria-label="...">
+		  <button type="button" class="btn btn-default">1</button>
+		  <button type="button" class="btn btn-default">2</button>
+
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		      Dropdown
+		      <span class="caret"></span>
+		    </button>
+		    <ul class="dropdown-menu">
+		      <li><a href="#">Dropdown link</a></li>
+		      <li><a href="#">Dropdown link</a></li>
+		    </ul>
+		  </div>
+		</div>
+		<!--两端对齐排列的按钮组  -->
+
+		<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-default">Left</button>
+		  </div>
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-default">Middle</button>
+		  </div>
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-default">Right</button>
+		  </div>
+		</div>
+		<!-- 单按钮下拉菜单 -->
+		<!-- 只要改变一些基本的标记，就能把按钮变成下拉菜单的开关。 -->
+		<div class="btn-group btn-warning">
+		  <button type="button" class="btn btn-default dropdown-toggle btn-warning" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Action <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+		<!-- 分裂式按钮下拉菜单 -->
+		<!-- 分裂式按钮下拉菜单也需要同样的改变一些标记，但只是多一个分开的按钮。 -->
+		<div class="btn-group">
+		  <button type="button" class="btn btn-danger">Action</button>
+		  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    <span class="caret"></span>
+		    <span class="sr-only">Toggle Dropdown</span>
+		  </button>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+		<!-- 在输入框的任意一侧添加额外元素或按钮。你还可以在输入框的两侧同时添加额外元素。 -->
+		<!-- input-group-lg 改变其大小 -->
+		<!-- .form-control前加 input-group-addon -->
+		<div class="input-group input-group-lg">
+		  <span class="input-group-addon" id="basic-addon1">@</span>
+		  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+		</div>
+		<div class="input-group">
+		  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+		  <span class="input-group-addon" id="basic-addon2">@example.com</span>
+		</div>
+
+
+
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性选择器</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid coral;
+		}
+
+		/*属性选择器*/
+		/*有class属性的元素被选中*/
+		/*div 且是span的被选中*/
+		/* div[class]{
+   			background-color: green;
+		} */
+
+
+		/*选中class值为one的*/
+		[class=two,one]{
+			background-color: pink;
+		}
+
+
+		/*属性值中有o的被选中*/
+		/*[class*=o]{
+			background-color: pink;
+		}*/
+
+
+		/*以什么开始的被选中*/
+		/* [class^=t]{
+			background-color: pink;
+		} */
+
+
+		/*以什么结尾的被选中*/
+		/* [class$=e]{
+			background-color: pink;
+		} */
+
+		
+		/*属性值中包含某个值的*/
+		/*div[class~=two]{
+			background-color: pink;
+		}*/
+
+
+
+	</style>
+</head>
+<body>
+	<!-- class可以有多个值 用空格隔开 -->
+	<div class="one two"></div>
+	<div class="two"></div>
+	<div class="three"></div>
+	<div></div>
+	<span class="span">span</span>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		.nextpt{
+			position: relative;
+			height: 300px;
+			width:450px;
+			/*overflow: hidden;*/
+			margin:20px auto 0;
+		}
+		.nextpt img{
+			height: 100%;
+			width:calc(100% - 50%);
+			float: left;
+			display: inline-block;
+		}
+		.cheses{
+			margin:50px auto 0;
+			width: 6%;
+		}
+		.cheses span{
+			border:1px solid #000;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+
+		});
+			
+
+	</script>
+</head>
+<body>
+	<div class="cheses">
+		<span data-pt="pt1"></span>
+		<span data-pt="pt2"></span>
+		<span data-pt="pt3"></span>
+		<span data-pt="pt4"></span>
+	</div>
+	<div class="nextpt">
+		<img src="./image/pt1.jpeg" alt="gril">
+		<img src="./image/pt2.jpeg" alt="gril">
+		<img src="./image/pt3.jpeg" alt="gril">
+		<img src="./image/pt4.jpeg" alt="gril">
+	</div>
+</body>
+</html>

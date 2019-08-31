@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Node</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		div{
+			background-color:gold;
+			height: 100px;
+			width: 100px;
+			border:1px solid red;
+			float: left;
+		}
+		#one{
+			background-color: red;
+		}
+	</style>
+	<script>
+		window.onload= function(){
+			var div =document.createElement('div');
+			div.innerText='four';
+			document.body.appendChild(div);
+
+			var one = document.getElementById('one');
+
+
+			//克隆节点
+			var clonOne=one.cloneNode('false');
+
+			//var clonOne=one.cloneNode(true);
+			clonOne.innerText ="clone";
+			document.body.appendChild(clonOne);
+
+
+
+
+
+		}
+		
+	</script>
+
+</head>
+<body>
+	<div id="one">one</div>
+	<div id="two">two</div>
+	<div id="three">three</div>
+</body>
+</html>

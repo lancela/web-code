@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>超链接</title>
+</head>
+<body>
+	<!-- 回到id='top'的位置 -->
+	<!-- top 可跳本页面或其他的页面 -->
+	<!-- target 属性的取值 _top _blank -->
+	<h3 id="top"> 顶部</h3>
+	<!-- 相对路径:相对与当前的目录结构产生的路径
+			绝对路径:从跟目录开始的路径 -->
+	<!-- <a href="file:///绝对路径">跳转 访问本地地址,前面加file:///</a> -->
+	<a href="file:///C:\Users\zl\Desktop\briup\html_css\day01\2-element.html">跳转本地绝对路径</a>
+	<a href="http://www.baidu.com"> 跳转百度绝对路径</a>
+	<!-- .是当前目录,文件所属目录 -->
+	<a href="./note.txt">跳转本地的相对路径</a>
+	<!-- .. 上级目录 -->
+	<a href="../day01/2-element.html">跳转本地的相对路径</a>
+
+	<!-- 锚点 href值是一个id -->
+	<a href="../../a-test/02-dongshou.html#top">返回顶部</a>
+	<!-- 邮箱跳转 -->
+	<a href="mailto:1690319247@qq.com">1111</a>
+	<a href="./note.txt" target="_blank">在新选项卡打开</a>
+	<a href="./note.txt" target="_top">在本选项卡打开</a>
+</body>
+</html>

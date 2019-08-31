@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后代过滤器</title>
+	<style>
+		.outer{
+			/*display: inline-block;*/
+			border:1px solid pink;
+			overflow: hidden;
+			folat:left;
+		}
+		.inner{
+			border:1px solid red;
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin:10px;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//每个outer 的第一个inner
+			//注意两者的区别
+			$result = $('.outer .inner:first-child');
+			//只有一个
+			$result = $('.outer .inner:first');
+			$result = $('.outer .inner:last-child');
+			//下标从一开始
+			// $result = $('.outer .inner:nth-child(odd)');
+			$result = $('.outer .inner:nth-child(odd)');
+
+
+			
+			$result.css('background','cyan');
+		});
+	</script>
+</head>
+
+<body>
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner "></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner "></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	
+	</div>
+</body>
+</html>
